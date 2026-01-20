@@ -1,101 +1,103 @@
-import Image from "next/image";
+import {
+  Hero,
+  ValueProposition,
+  IntentTiles,
+  ItinerariesRow,
+  GuidesSection,
+  WhereToStayModule,
+  TrustSection,
+} from "@/components/home";
+import { DestinationGrid } from "@/components/destinations";
+import { Newsletter } from "@/components/common";
+import { featuredDestinations } from "@/lib/constants/destinations";
 
-export default function Home() {
+// Homepage FAQ for SEO
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the best time to visit Vietnam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The best time to visit Vietnam depends on the region. For the north (Hanoi, Ha Long Bay), visit from October to April. For central Vietnam (Hoi An, Da Nang), February to August is ideal. The south (Ho Chi Minh City, Mekong Delta) is best from December to April during the dry season.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How many days do I need in Vietnam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We recommend at least 10-14 days to explore Vietnam's highlights. A week allows you to see 2-3 destinations, while 2-3 weeks lets you travel from north to south at a comfortable pace. Our sample itineraries help you plan the perfect trip length.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need a visa for Vietnam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Most visitors need a visa for Vietnam. Citizens of many countries can apply for an e-visa online, which allows stays of up to 90 days. Some nationalities qualify for visa exemption for shorter stays. Check our visa guide for the latest requirements.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is Vietnam safe for tourists?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Vietnam is generally very safe for tourists. Violent crime against travelers is rare. The main concerns are petty theft (watch your belongings in crowded areas) and traffic safety. Read our safety guide for tips on avoiding common scams.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does it cost to travel in Vietnam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Vietnam offers excellent value for travelers. Budget travelers can get by on $25-40 per day, mid-range travelers typically spend $50-100 per day, and luxury experiences start around $150+ per day. Costs vary by region, with cities generally being more expensive than rural areas.",
+      },
+    },
+  ],
+};
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      {/* FAQ JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Intent Tiles */}
+      <IntentTiles />
+
+      {/* Featured Destinations (8 cards) */}
+      <DestinationGrid
+        destinations={featuredDestinations}
+        title="Top Destinations in Vietnam"
+        subtitle="From bustling cities to serene beaches, discover where to go in Vietnam"
+      />
+
+      {/* Sample Itineraries */}
+      <ItinerariesRow />
+
+      {/* Where to Stay Module */}
+      <WhereToStayModule />
+
+      {/* Essential Guides */}
+      <GuidesSection />
+
+      {/* Value Proposition */}
+      <ValueProposition />
+
+      {/* Trust Section */}
+      <TrustSection />
+
+      {/* Newsletter */}
+      <Newsletter />
+    </>
   );
 }
