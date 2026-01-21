@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "tsx scripts/seed.ts",
+    "download-images": "tsx scripts/download-images.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
