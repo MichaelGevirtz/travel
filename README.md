@@ -20,6 +20,43 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Testing
+
+This project uses **Vitest** and **React Testing Library** for comprehensive test coverage.
+
+### Quick Start
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run only unit tests
+npm run test:unit
+
+# Run only component tests
+npm run test:component
+```
+
+### Test Structure
+
+- **Unit Tests**: `tests/unit/` - Testing utilities, helpers, and business logic
+- **Component Tests**: `tests/component/` - Testing React components
+- **Coverage Goals**: 80% statements, 75% branches, 80% functions
+
+### Automated Test Generation
+
+Use the test agent to automatically generate tests:
+
+```
+"Generate tests for components/home/Hero.tsx"
+"Generate tests for lib/utils/format.ts"
+```
+
+📖 **For detailed testing documentation, see [TESTING_GUIDE.md](./TESTING_GUIDE.md)**
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
