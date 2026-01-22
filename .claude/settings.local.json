@@ -12,7 +12,9 @@
       "Bash(taskkill:*)",
       "Bash(npm run seed:*)",
       "Bash(npm run download-images:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npm run test:run:*)",
+      "Bash(npm run test:coverage:*)"
     ]
   }
 }
