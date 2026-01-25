@@ -38,6 +38,34 @@ export interface PageContentMeta {
   externalLinks: string[];
 }
 
+export interface FactToVerify {
+  claim: string;
+  location: string;
+  priority: "high" | "medium" | "low";
+  verified: boolean;
+  verifiedAt?: Date;
+  verifiedBy?: string;
+}
+
+export interface AgentEditHistory {
+  iteration: number;
+  editorDecision: "approve" | "reject";
+  editorScore: number;
+  editorSummary: string;
+  issues: any[];
+  requiredChanges: string[];
+  timestamp: Date;
+}
+
+export interface AgentWorkflow {
+  generatedBy: "agent" | "manual";
+  agentIterations: number;
+  agentFinalScore: number;
+  agentEditHistory: AgentEditHistory[];
+  factsToVerify: FactToVerify[];
+  generatedAt: Date;
+}
+
 export interface IPage extends Document {
   slug: string;
   title: string;
@@ -57,6 +85,7 @@ export interface IPage extends Document {
   contentMeta: PageContentMeta;
   destinationType?: DestinationType;
   region?: VietnamRegion;
+  agentWorkflow?: AgentWorkflow;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -157,6 +186,35 @@ const PageSchema = new Schema(
     // Category
     destinationType: { type: String, enum: DEST_TYPES },
     region: { type: String, enum: VN_REGIONS },
+
+    // Agent Workflow (optional - only for agent-generated content)
+    agentWorkflow: {
+      generatedBy: { type: String, enum: ["agent", "manual"] },
+      agentIterations: { type: Number, min: 0, max: 10 },
+      agentFinalScore: { type: Number, min: 0, max: 100 },
+      agentEditHistory: [
+        {
+          iteration: { type: Number, min: 1 },
+          editorDecision: { type: String, enum: ["approve", "reject"] },
+          editorScore: { type: Number, min: 0, max: 100 },
+          editorSummary: { type: String },
+          issues: { type: Array },
+          requiredChanges: { type: [String] },
+          timestamp: { type: Date },
+        },
+      ],
+      factsToVerify: [
+        {
+          claim: { type: String, required: true },
+          location: { type: String, required: true },
+          priority: { type: String, enum: ["high", "medium", "low"], required: true },
+          verified: { type: Boolean, default: false },
+          verifiedAt: { type: Date },
+          verifiedBy: { type: String },
+        },
+      ],
+      generatedAt: { type: Date },
+    },
   },
   { timestamps: true }
 );

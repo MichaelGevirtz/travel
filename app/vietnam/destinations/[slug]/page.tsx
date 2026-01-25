@@ -8,6 +8,7 @@ import {
   Calendar,
   Users,
   ArrowRight,
+  BookOpen,
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout";
 import { DestinationCard } from "@/components/destinations";
@@ -62,6 +63,28 @@ export async function generateMetadata({
   };
 }
 
+// Fetch published articles for this destination
+async function getDestinationArticles(destinationSlug: string) {
+  try {
+    // In production, use the full URL. For now, call directly
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const response = await fetch(
+      `${baseUrl}/api/content/by-destination?destination=${destinationSlug}`,
+      { cache: "no-store" }
+    );
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const data = await response.json();
+    return data.articles || [];
+  } catch (error) {
+    console.error("Error fetching destination articles:", error);
+    return [];
+  }
+}
+
 // Sample FAQ data (would come from database in production)
 const sampleFaqs = [
   {
@@ -86,12 +109,15 @@ const sampleFaqs = [
   },
 ];
 
-export default function DestinationPage({ params }: DestinationPageProps) {
+export default async function DestinationPage({ params }: DestinationPageProps) {
   const destination = allDestinations.find((d) => d.slug === params.slug);
 
   if (!destination) {
     notFound();
   }
+
+  // Fetch published articles for this destination
+  const articles = await getDestinationArticles(params.slug);
 
   // Get related destinations (same region, different destination)
   const relatedDestinations = allDestinations
@@ -226,6 +252,46 @@ export default function DestinationPage({ params }: DestinationPageProps) {
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Featured Article Banner (if available) */}
+          {articles.length > 0 && (
+            <div className="mb-12 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl p-8 text-white">
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 p-4 bg-white/20 rounded-xl">
+                  <BookOpen className="h-8 w-8" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-emerald-100 text-sm font-medium mb-2">
+                    Complete Travel Guide
+                  </p>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                    {articles[0].title}
+                  </h2>
+                  <p className="text-emerald-100 mb-6 line-clamp-2">
+                    {articles[0].excerpt}
+                  </p>
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center gap-2 text-sm text-emerald-100">
+                      <Clock className="h-4 w-4" />
+                      <span>{articles[0].contentMeta.readingTime} min read</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-emerald-100">
+                      <span>
+                        {articles[0].contentMeta.wordCount.toLocaleString()} words
+                      </span>
+                    </div>
+                  </div>
+                  <Link
+                    href={`/vietnam/blog/${articles[0].slug}`}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors"
+                  >
+                    Read Complete Guide
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content Column */}
             <div className="lg:col-span-2 space-y-12">
