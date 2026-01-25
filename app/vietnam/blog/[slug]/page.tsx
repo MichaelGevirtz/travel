@@ -8,6 +8,7 @@ import dbConnect from "@/lib/db/mongodb";
 import { PageModel } from "@/lib/db/models/Page";
 import { Badge } from "@/components/ui/badge";
 import ReactMarkdown from "react-markdown";
+import { markdownComponents } from "@/components/blog/MarkdownComponents";
 
 interface BlogPostPageProps {
   params: { slug: string };
@@ -150,20 +151,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
 
           {/* Main Content - Render Markdown */}
-          <div className="prose prose-lg max-w-none prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:my-6 prose-li:my-2">
-            <ReactMarkdown>{article.content}</ReactMarkdown>
+          <div className="prose prose-lg max-w-none">
+            <ReactMarkdown components={markdownComponents}>
+              {article.content}
+            </ReactMarkdown>
           </div>
-
-          {/* Agent Info (if AI-generated) */}
-          {article.agentWorkflow && (
-            <div className="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200">
-              <p className="text-sm text-gray-600">
-                This article was generated with AI assistance and reviewed by our
-                editorial team. Score: {article.agentWorkflow.agentFinalScore}/100 •
-                Iterations: {article.agentWorkflow.agentIterations}
-              </p>
-            </div>
-          )}
 
           {/* Back to Top */}
           <div className="mt-12 pt-8 border-t border-gray-200 text-center">

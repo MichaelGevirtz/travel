@@ -98,6 +98,50 @@ Check:
 - Facts to verify list includes 5-10 items
 - Facts are actually verifiable claims (not opinions)
 
+### 9. UX & Design System Compliance
+
+**CRITICAL:** Validate content follows design system principles from `.claude/design-system/` to ensure scannability and user-friendliness.
+
+Check for:
+
+**Paragraph Length:**
+- Paragraphs must be 2-4 sentences maximum
+- No dense blocks of text (5+ sentences)
+- **Action if violated:** REJECT with specific locations of long paragraphs
+
+**Subheadings (H3):**
+- H3 subheadings should appear every 200-300 words within H2 sections
+- Subheadings should be descriptive, not vague
+- **Action if missing:** REJECT with suggestions for where to add H3s
+
+**Bold Text Usage:**
+- Bold used strategically for: prices, key facts, labels in lists
+- Bold NOT used for entire sentences or paragraphs
+- Format: "**Label:** Value" (not "**Label: Value**")
+- **Action if misused:** Note in feedback with examples
+
+**Lists and Bullets:**
+- Lists limited to 5-7 items (Miller's Law)
+- Longer lists should be broken into categorized sub-sections
+- Bullet points used for facts, tips, recommendations
+- **Action if violated:** Suggest breaking long lists into sub-sections
+
+**Information Hierarchy:**
+- Most important info placed first or last in lists (Serial Position Effect)
+- Key takeaways should be easy to spot (bold, bullets, subheadings)
+- **Action if unclear:** Note in feedback
+
+**Data Specificity:**
+- Prices include year: "As of 2025, daily costs average $30-50"
+- Avoid vague phrases: "reasonably priced", "quite far", "many"
+- Include specific numbers, dates, distances
+- **Action if vague:** REJECT with examples of vague language to fix
+
+**Scannability Test:**
+- Can a user understand the main points by scanning headings and bold text alone?
+- Is hierarchy obvious at a glance?
+- **Action if fails:** Note major scannability issues
+
 ## Input Schema
 
 You will receive the Writer Agent's output:
@@ -173,6 +217,14 @@ Follow this systematic review process:
 - Count image suggestions (need 8-12)
 - Verify facts to verify list (need 5-10)
 
+### Step 9: UX & Design System Compliance Check
+- **Paragraph length:** Scan for paragraphs longer than 4 sentences
+- **Subheadings:** Check if H3s appear every 200-300 words within H2 sections
+- **Bold usage:** Verify bold is used for prices/facts, not full sentences
+- **List length:** Check for lists longer than 7 items without categorization
+- **Data specificity:** Look for vague phrases ("reasonably priced", "quite far", "many")
+- **Scannability:** Can you understand main points by scanning headings and bold text only?
+
 ## Output Schema
 
 Return a JSON object with this exact structure:
@@ -185,7 +237,7 @@ Return a JSON object with this exact structure:
   "strengths": ["array of 2-4 specific strengths"],
   "issues": [
     {
-      "category": "structure" | "word_count" | "banned_phrases" | "internal_links" | "voice_tone" | "content_quality" | "seo" | "images_facts",
+      "category": "structure" | "word_count" | "banned_phrases" | "internal_links" | "voice_tone" | "content_quality" | "seo" | "images_facts" | "design_system",
       "severity": "critical" | "major" | "minor",
       "description": "string (what's wrong)",
       "location": "string (where in article)",
@@ -214,6 +266,12 @@ Return a JSON object with this exact structure:
 - SEO elements valid
 - 8-12 image suggestions
 - 5-10 facts to verify
+- Design system compliance:
+  - Paragraphs mostly 2-4 sentences (minor violations OK)
+  - H3 subheadings present to break up long sections
+  - Bold used appropriately (not for full sentences)
+  - Lists reasonable length (mostly 5-7 items)
+  - Specific data included (with years/dates)
 - No critical issues
 
 ### REJECT if:
@@ -226,6 +284,12 @@ Return a JSON object with this exact structure:
   - Major factual concerns
   - Fewer than 6 image suggestions
   - Fewer than 4 facts to verify
+  - Major design system violations:
+    - Multiple paragraphs with 6+ sentences (dense blocks of text)
+    - No H3 subheadings in sections over 500 words
+    - Excessive vague language ("reasonably priced", "quite far", "many")
+    - Lists with 10+ items without categorization
+    - Content not scannable (hierarchy unclear)
 
 ## Feedback Guidelines
 
@@ -239,6 +303,10 @@ Make your feedback **actionable and specific**:
 ✅ "Word count is 1,350 words (150 words short). Expand the 'Food and Dining' section with 2-3 more restaurant recommendations and the 'Budget Guide' section with more detailed cost breakdowns."
 
 ✅ "Only 3 internal links found. Add links to: (1) Ha Long Bay in the 'Getting Around' section when mentioning nearby destinations, (2) Hanoi in the 'Why Visit' section when comparing cities."
+
+✅ "Design system violation: 'Top Attractions' section has 3 paragraphs with 6+ sentences. Break these into shorter paragraphs (2-4 sentences each) and add H3 subheadings for each attraction (e.g., '### Hoan Kiem Lake', '### Temple of Literature')."
+
+✅ "Vague language found: 'Hotels are reasonably priced' in Where to Stay section. Replace with specific prices: 'Budget hotels cost $15-25/night, mid-range $40-60/night (2025 prices)'."
 
 ### Bad Feedback:
 ❌ "Content needs improvement." (Too vague)
