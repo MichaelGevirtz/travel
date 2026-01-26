@@ -1,5 +1,6 @@
 import { generateArticle, WriterInput, WriterOutput } from "./writerAgent";
 import { reviewArticle, EditorOutput } from "./editorAgent";
+import { validateSEO, SEOValidatorOutput } from "./seoValidatorAgent";
 import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
@@ -24,6 +25,9 @@ export interface EditHistory {
   editorSummary: string;
   issues: any[];
   requiredChanges: string[];
+  seoScore?: number;
+  seoPassed?: boolean;
+  seoIssues?: any[];
   timestamp: Date;
 }
 
@@ -32,6 +36,7 @@ export interface OrchestratorOutput {
   status: "approved" | "draft" | "error";
   article: WriterOutput | null;
   finalReview: EditorOutput | null;
+  finalSEO: SEOValidatorOutput | null;
   iterations: number;
   editHistory: EditHistory[];
   errorMessage?: string;
@@ -62,26 +67,28 @@ const stripMarkdownCodeBlocks = (text: string): string => {
   return text.trim();
 };
 
-// Generate revised article based on editor feedback
+// Generate revised article based on editor and SEO feedback
 const generateRevision = async (
   originalInput: WriterInput,
   originalArticle: WriterOutput,
   editorFeedback: EditorOutput,
+  seoFeedback: SEOValidatorOutput | null,
   iteration: number
 ): Promise<WriterOutput> => {
   try {
     console.log(`\n🔄 [Orchestrator] Starting revision ${iteration}`);
     console.log(`🔄 [Orchestrator] Editor score: ${editorFeedback.overallScore}/100`);
-    console.log(`🔄 [Orchestrator] Issues to address: ${editorFeedback.issues.length}`);
-    console.log(`🔄 [Orchestrator] Required changes: ${editorFeedback.requiredChanges.length}`);
+    console.log(`🔄 [Orchestrator] SEO score: ${seoFeedback?.score || "N/A"}/100`);
+    console.log(`🔄 [Orchestrator] Editor issues: ${editorFeedback.issues.length}`);
+    console.log(`🔄 [Orchestrator] SEO issues: ${seoFeedback?.issues.length || 0}`);
 
     const systemPrompt = loadWriterPrompt();
 
-    // Format the feedback for the writer
-    const feedbackText = `
+    // Format the editor feedback
+    const editorFeedbackText = `
 **EDITOR FEEDBACK (Iteration ${iteration}):**
 
-**Decision:** REJECTED
+**Decision:** ${editorFeedback.decision.toUpperCase()}
 **Overall Score:** ${editorFeedback.overallScore}/100
 
 **Summary:**
@@ -107,6 +114,37 @@ ${editorFeedback.recommendations.length > 0 ? `
 ${editorFeedback.recommendations.map((rec, i) => `${i + 1}. ${rec}`).join("\n")}
 ` : ""}
 `;
+
+    // Format SEO feedback if available
+    const seoFeedbackText = seoFeedback ? `
+**SEO VALIDATION FEEDBACK:**
+
+**Score:** ${seoFeedback.score}/100 (Grade: ${seoFeedback.grade})
+**Status:** ${seoFeedback.passed ? "PASSED" : "NEEDS IMPROVEMENT"}
+
+**Score Breakdown:**
+- Title & Meta: ${seoFeedback.breakdown.titleMeta}/20
+- Content Quality: ${seoFeedback.breakdown.contentQuality}/30
+- Structure: ${seoFeedback.breakdown.structure}/20
+- Links: ${seoFeedback.breakdown.links}/15
+- Technical: ${seoFeedback.breakdown.technical}/15
+
+**SEO Issues to Fix:**
+${seoFeedback.issues.map((issue, i) => `
+${i + 1}. [${issue.priority.toUpperCase()}] ${issue.check}
+   - Current: ${issue.current}
+   - Required: ${issue.required}
+   - Location: ${issue.location}
+   - Fix: ${issue.fix}
+`).join("\n")}
+
+${seoFeedback.recommendations.length > 0 ? `
+**SEO Recommendations:**
+${seoFeedback.recommendations.map((rec, i) => `${i + 1}. ${rec}`).join("\n")}
+` : ""}
+` : "";
+
+    const feedbackText = editorFeedbackText + seoFeedbackText;
 
     // Format available articles for the prompt
     const availableArticlesText = originalInput.availableArticles
@@ -203,6 +241,7 @@ export const orchestrateContentGeneration = async (
   const editHistory: EditHistory[] = [];
   let currentArticle: WriterOutput | null = null;
   let currentReview: EditorOutput | null = null;
+  let currentSEO: SEOValidatorOutput | null = null;
 
   console.log("\n🤖 ============================================");
   console.log(`🤖 Starting content generation for: "${input.topic}"`);
@@ -229,11 +268,12 @@ export const orchestrateContentGeneration = async (
         console.log("Writer: Generating initial article...");
         currentArticle = await generateArticle(writerInput);
       } else if (currentArticle && currentReview) {
-        console.log(`Writer: Generating revision based on editor feedback...`);
+        console.log(`Writer: Generating revision based on editor and SEO feedback...`);
         currentArticle = await generateRevision(
           writerInput,
           currentArticle,
           currentReview,
+          currentSEO,
           iteration
         );
       }
@@ -248,7 +288,11 @@ export const orchestrateContentGeneration = async (
       console.log("Editor: Reviewing article...");
       currentReview = await reviewArticle(currentArticle);
 
-      // Add to edit history
+      // Step 3: Run SEO validation
+      console.log("SEO Validator: Validating article SEO...");
+      currentSEO = await validateSEO(currentArticle);
+
+      // Add to edit history with SEO results
       editHistory.push({
         iteration,
         editorDecision: currentReview.decision,
@@ -256,16 +300,21 @@ export const orchestrateContentGeneration = async (
         editorSummary: currentReview.summary,
         issues: currentReview.issues,
         requiredChanges: currentReview.requiredChanges,
+        seoScore: currentSEO.score,
+        seoPassed: currentSEO.passed,
+        seoIssues: currentSEO.issues,
         timestamp: new Date(),
       });
 
       console.log(`✓ Editor review complete: ${currentReview.decision.toUpperCase()} (score: ${currentReview.overallScore}/100)`);
+      console.log(`✓ SEO validation complete: ${currentSEO.passed ? "PASSED" : "NEEDS WORK"} (score: ${currentSEO.score}/100)`);
 
-      // Step 3: Check decision
-      if (currentReview.decision === "approve") {
+      // Step 4: Check combined decision (Editor approve + SEO pass)
+      if (currentReview.decision === "approve" && currentSEO.passed) {
         console.log(`\n✅ ============================================`);
         console.log(`✅ Article APPROVED on iteration ${iteration}`);
-        console.log(`✅ Final score: ${currentReview.overallScore}/100`);
+        console.log(`✅ Editor score: ${currentReview.overallScore}/100`);
+        console.log(`✅ SEO score: ${currentSEO.score}/100 (Grade: ${currentSEO.grade})`);
         console.log(`✅ Word count: ${currentArticle.contentMeta.wordCount}`);
         console.log(`✅ Internal links: ${currentArticle.contentMeta.internalLinks.length}`);
         console.log(`✅ ============================================\n`);
@@ -274,9 +323,33 @@ export const orchestrateContentGeneration = async (
           status: "approved",
           article: currentArticle,
           finalReview: currentReview,
+          finalSEO: currentSEO,
           iterations: iteration,
           editHistory,
         };
+      } else if (currentReview.decision === "approve" && !currentSEO.passed) {
+        // Editor approved but SEO failed - need revision for SEO issues
+        console.log(`\n⚠️  Editor approved but SEO validation failed (score: ${currentSEO.score}/100)`);
+        console.log(`⚠️  SEO issues: ${currentSEO.issues.length}`);
+
+        if (iteration === MAX_ITERATIONS) {
+          console.log(`\n⚠️  ============================================`);
+          console.log(`⚠️  Max iterations (${MAX_ITERATIONS}) reached. Saving as DRAFT.`);
+          console.log(`⚠️  Editor score: ${currentReview.overallScore}/100`);
+          console.log(`⚠️  SEO score: ${currentSEO.score}/100 (below threshold)`);
+          console.log(`⚠️  This article requires manual SEO review.`);
+          console.log(`⚠️  ============================================\n`);
+          return {
+            success: true,
+            status: "draft",
+            article: currentArticle,
+            finalReview: currentReview,
+            finalSEO: currentSEO,
+            iterations: iteration,
+            editHistory,
+          };
+        }
+        console.log(`\n🔄 Proceeding to iteration ${iteration + 1} for SEO improvements...`);
       } else {
         console.log(`\n❌ Article REJECTED on iteration ${iteration}`);
         console.log(`❌ Score: ${currentReview.overallScore}/100`);
@@ -287,7 +360,8 @@ export const orchestrateContentGeneration = async (
         if (iteration === MAX_ITERATIONS) {
           console.log(`\n⚠️  ============================================`);
           console.log(`⚠️  Max iterations (${MAX_ITERATIONS}) reached. Saving as DRAFT.`);
-          console.log(`⚠️  Final score: ${currentReview.overallScore}/100`);
+          console.log(`⚠️  Editor score: ${currentReview.overallScore}/100`);
+          console.log(`⚠️  SEO score: ${currentSEO?.score || "N/A"}/100`);
           console.log(`⚠️  This article requires manual review.`);
           console.log(`⚠️  ============================================\n`);
           return {
@@ -295,6 +369,7 @@ export const orchestrateContentGeneration = async (
             status: "draft",
             article: currentArticle,
             finalReview: currentReview,
+            finalSEO: currentSEO,
             iterations: iteration,
             editHistory,
           };
@@ -311,6 +386,7 @@ export const orchestrateContentGeneration = async (
       status: "draft",
       article: currentArticle,
       finalReview: currentReview,
+      finalSEO: currentSEO,
       iterations: MAX_ITERATIONS,
       editHistory,
     };
@@ -329,6 +405,7 @@ export const orchestrateContentGeneration = async (
       status: "error",
       article: currentArticle,
       finalReview: currentReview,
+      finalSEO: currentSEO,
       iterations: editHistory.length,
       editHistory,
       errorMessage: error instanceof Error ? error.message : String(error),

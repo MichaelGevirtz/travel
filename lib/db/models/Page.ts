@@ -66,6 +66,33 @@ export interface AgentWorkflow {
   generatedAt: Date;
 }
 
+export interface GeoCoordinates {
+  latitude: number;
+  longitude: number;
+}
+
+export interface NearbyDestination {
+  slug: string;
+  name: string;
+  distance: number; // in kilometers
+  travelTime: string;
+  direction: string; // north, south, east, west, etc.
+}
+
+export interface NearestAirport {
+  name: string;
+  code: string;
+  distance: string; // e.g., "35km / 45 minutes"
+}
+
+export interface PageGeo {
+  coordinates: GeoCoordinates;
+  nearestAirport?: NearestAirport;
+  distanceFromHanoi?: string;
+  distanceFromHCMC?: string;
+  nearbyDestinations: NearbyDestination[];
+}
+
 export interface IPage extends Document {
   slug: string;
   title: string;
@@ -85,6 +112,7 @@ export interface IPage extends Document {
   contentMeta: PageContentMeta;
   destinationType?: DestinationType;
   region?: VietnamRegion;
+  geo?: PageGeo;
   agentWorkflow?: AgentWorkflow;
   createdAt: Date;
   updatedAt: Date;
@@ -187,6 +215,30 @@ const PageSchema = new Schema(
     destinationType: { type: String, enum: DEST_TYPES },
     region: { type: String, enum: VN_REGIONS },
 
+    // Geographic data for Geo SEO
+    geo: {
+      coordinates: {
+        latitude: { type: Number, min: -90, max: 90 },
+        longitude: { type: Number, min: -180, max: 180 },
+      },
+      nearestAirport: {
+        name: { type: String, maxlength: 100 },
+        code: { type: String, maxlength: 10 },
+        distance: { type: String, maxlength: 50 },
+      },
+      distanceFromHanoi: { type: String, maxlength: 50 },
+      distanceFromHCMC: { type: String, maxlength: 50 },
+      nearbyDestinations: [
+        {
+          slug: { type: String, required: true, maxlength: 160 },
+          name: { type: String, required: true, maxlength: 100 },
+          distance: { type: Number, min: 0 }, // in kilometers
+          travelTime: { type: String, maxlength: 50 },
+          direction: { type: String, maxlength: 20 },
+        },
+      ],
+    },
+
     // Agent Workflow (optional - only for agent-generated content)
     agentWorkflow: {
       generatedBy: { type: String, enum: ["agent", "manual"] },
@@ -224,6 +276,7 @@ PageSchema.index({ status: 1, publishedAt: -1 });
 PageSchema.index({ destinationType: 1, region: 1 });
 PageSchema.index({ "searchConsole.impressions": -1 });
 PageSchema.index({ "affiliateLinks.provider": 1 });
+PageSchema.index({ "geo.coordinates.latitude": 1, "geo.coordinates.longitude": 1 });
 
 // Note: publishedAt should be set when status changes to 'published' in API routes
 

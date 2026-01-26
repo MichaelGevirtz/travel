@@ -1,22 +1,27 @@
 # Hanoi Travel Guide 2025: Everything You Need to Know
 
-Planning a trip to Hanoi? You're in for a treat. Vietnam's capital is a wild mix of old and new - ancient temples sit next to French colonial buildings, while motorbikes zip through streets filled with food vendors.
+Planning a trip to Hanoi? You're in for a treat. Located in northern Vietnam along the Red River Delta, the capital city is a wild mix of old and new - ancient temples sit next to French colonial buildings, while motorbikes zip through streets filled with food vendors. Just 170km from Ha Long Bay and serving as the gateway to Sapa and Ninh Binh, Hanoi is the ideal starting point for exploring North Vietnam.
 
 This guide covers everything you need to know to plan your visit, from where to stay to what to eat. Let's dive in.
 
 ## Quick Facts
 
+- **Location:** Northern Vietnam
+- **Coordinates:** 21.0285°N, 105.8542°E
+- **Region:** North Vietnam
 - **Best Time to Visit:** October to April (dry season, cooler weather)
 - **Currency:** Vietnamese Dong (VND) - $1 USD = 24,000 VND (2025 rates)
 - **Language:** Vietnamese (English widely spoken in tourist areas)
 - **Population:** 8.5 million (2024 estimate)
-- **Airport:** Noi Bai International Airport (HAN), 45 minutes from city center
+- **Nearest Airport:** Noi Bai International Airport (HAN) - 25km / 45 minutes from city center
+- **From Ho Chi Minh City:** 1,760km / 2 hours by flight
+- **From Da Nang:** 764km / 1.5 hours by flight or 15 hours by train
 - **Time Zone:** GMT+7 (no daylight saving)
 - **Average Temperature:** 17°C (63°F) in winter, 32°C (90°F) in summer
 
 ## Why Visit Hanoi
 
-Hanoi is where you'll find the real Vietnam. Unlike [Ho Chi Minh City](/ho-chi-minh-city) down south, which feels more modern and fast-paced, Hanoi holds onto its traditions.
+Hanoi is where you'll find the real Vietnam. Unlike [Ho Chi Minh City](/vietnam/destinations/ho-chi-minh-city) down south, which feels more modern and fast-paced, Hanoi holds onto its traditions.
 
 You'll see grandmothers selling soup on street corners at 6am. Men play chess in the park. Families gather for coffee at tiny sidewalk cafes.
 
@@ -36,7 +41,7 @@ The city doesn't try to hide its past - it celebrates it.
 
 The food alone is worth the trip. Hanoi is the birthplace of pho, bun cha (Obama ate here in 2016), and egg coffee. You'll find better street food here than anywhere else in Vietnam.
 
-Most dishes cost **$1-3**, and the quality is incredible.
+Most dishes cost **$1-3**, and you'll find flavors you won't get anywhere else in Vietnam.
 
 ### Know Before You Go
 
@@ -58,7 +63,7 @@ The area gets crowded on weekends when the streets close to traffic.
 
 This is Hanoi's beating heart. Each street used to sell one product (Silk Street, Silver Street, etc.), and some still do.
 
-Spend half a day wandering the narrow lanes, dodging motorbikes, and stopping for coffee or snacks. The architecture is amazing - skinny tube houses with colorful facades.
+Spend half a day wandering the narrow lanes, dodging motorbikes, and stopping for coffee or snacks. The architecture stands out - skinny tube houses, some over 100 years old, with colorful facades and intricate balconies.
 
 Go early morning or late afternoon to avoid the worst heat and traffic. Don't miss Dong Xuan Market at the north end.
 
@@ -136,7 +141,7 @@ If you're staying more than a week or want to live like a local, consider West L
 
 You're 20-30 minutes from the Old Quarter by taxi (**$3-5**). This area makes sense if you're working remotely or want a break from tourist central.
 
-The sunset views over the lake are beautiful.
+The sunset views over the lake turn the water gold and orange - bring your camera.
 
 ### Tay Ho (Best for Foodies)
 
@@ -292,13 +297,13 @@ Motorbikes cost **$5-8/day** but Hanoi traffic is intense - only rent if you're 
 - Book on: Vietnam Airlines, VietJet, or Bamboo Airways
 
 **By Train (Reunification Express):**
-- To Hue: 12-14 hours, **$30-50**
-- To Da Nang: 15-17 hours, **$35-60**
+- To [Hue](/vietnam/destinations/hue): 12-14 hours, **$30-50**
+- To [Da Nang](/vietnam/destinations/da-nang): 15-17 hours, **$35-60**
 - Book soft sleeper for comfort
 
 **By Bus:**
-- To Sapa: 6 hours, **$10-15**
-- To Ninh Binh: 2.5 hours, **$5-8**
+- To [Sapa](/vietnam/destinations/sapa): 6 hours, **$10-15**
+- To [Ninh Binh](/vietnam/destinations/ninh-binh): 2.5 hours, **$5-8**
 - Book through your hotel or Baolau
 
 ## Budget Guide
@@ -336,7 +341,7 @@ This budget gets you comfortable:
 - **Attractions:** $5-10
 - **Drinks at bars:** $3-5
 
-At this level, you can take a cooking class (**$30-40**), book a day trip to [Ha Long Bay](/ha-long-bay) (**$40-60**), or splurge on a nice meal without breaking your budget.
+At this level, you can take a cooking class (**$30-40**), book a day trip to [Ha Long Bay](/vietnam/destinations/ha-long-bay) (**$40-60**), or splurge on a nice meal without breaking your budget.
 
 You'll be comfortable but not living large.
 
@@ -494,13 +499,25 @@ Most nationalities can get a visa on arrival or e-visa for Vietnam. Check curren
 
 Some nationalities get 15-30 days visa-free. Always verify the latest rules on the Vietnamese immigration website.
 
+### Nearby Destinations
+
+Hanoi is the perfect base for visiting northern Vietnam's top attractions:
+
+| Destination | Distance | Travel Time | Direction |
+|-------------|----------|-------------|-----------|
+| [Ha Long Bay](/vietnam/destinations/ha-long-bay) | 170km | 3.5 hours by car | East |
+| [Ninh Binh](/vietnam/destinations/ninh-binh) | 95km | 2 hours by car | South |
+| [Sapa](/vietnam/destinations/sapa) | 320km | 6 hours by bus | Northwest |
+| [Mai Chau](/vietnam/destinations/mai-chau) | 135km | 3 hours by car | Southwest |
+| [Tam Coc](/vietnam/destinations/tam-coc) | 100km | 2 hours by car | South |
+
 ### Day Trips from Hanoi
 
 **Ha Long Bay (Most Popular)**
 Honestly, spend a night on a boat to really experience it. Day tours cost **$40-60** and involve 3-4 hours of driving each way. Book through a reputable operator, not random street agents.
 
 **Ninh Binh (2.5 hours south)**
-Stunning karst landscapes without the tourist crowds. Day tours cost **$25-35** and include boat rides through caves and temple visits. You can also go independently by bus for cheaper.
+Limestone karst landscapes similar to Ha Long Bay, but without the tourist crowds. Day tours cost **$25-35** and include boat rides through caves and temple visits. You can also go independently by bus for cheaper.
 
 **Sapa (6 hours northwest)**
 Needs at least 2 days - don't try it as a day trip. The mountain scenery and hill tribe villages are incredible but the journey is long.
@@ -511,7 +528,7 @@ Half-day trip involving a boat ride and cable car to reach temples in the mounta
 ### How Long to Stay
 
 - **3 days minimum:** See main sights and eat your way through the city
-- **5 days:** Add day trips and explore different neighborhoods
+- **5 days:** Add day trips and check out different neighborhoods
 - **1 week:** Slow down, take cooking classes, live like a local
 - **Months:** Many travelers stay for extended periods - Hanoi grows on you
 

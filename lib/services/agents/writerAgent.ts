@@ -28,6 +28,29 @@ export interface FactToVerify {
   priority: "high" | "medium" | "low";
 }
 
+export interface NearbyDestination {
+  slug: string;
+  name: string;
+  distance: number;
+  travelTime: string;
+  direction: string;
+}
+
+export interface WriterGeo {
+  coordinates: {
+    latitude: number;
+    longitude: number;
+  };
+  nearestAirport?: {
+    name: string;
+    code: string;
+    distance: string;
+  };
+  distanceFromHanoi?: string;
+  distanceFromHCMC?: string;
+  nearbyDestinations: NearbyDestination[];
+}
+
 export interface WriterOutput {
   slug: string;
   title: string;
@@ -41,6 +64,7 @@ export interface WriterOutput {
   author: string;
   destinationType: string | null;
   region: string | null;
+  geo?: WriterGeo;
   contentMeta: {
     wordCount: number;
     readingTime: number;
