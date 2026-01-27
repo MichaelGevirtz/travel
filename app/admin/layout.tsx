@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LayoutDashboard, FileText, ListTodo, BarChart3, Settings } from "lucide-react";
+import LogoutButton from "@/components/admin/LogoutButton";
 
 export const metadata: Metadata = {
   title: {
@@ -43,6 +44,7 @@ export default function AdminLayout({
             >
               View Site →
             </Link>
+            <LogoutButton />
           </div>
         </div>
       </header>
