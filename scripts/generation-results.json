@@ -1,0 +1,90 @@
+[
+  {
+    "slug": "ho-chi-minh-city",
+    "status": "skipped"
+  },
+  {
+    "slug": "ha-long-bay",
+    "status": "skipped"
+  },
+  {
+    "slug": "hoi-an",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTsUcK8x4Wb1np4YSgM\"}"
+  },
+  {
+    "slug": "da-nang",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTseRfetEVQn56AAk5K\"}"
+  },
+  {
+    "slug": "phu-quoc",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTsq2eAk1f9f8y5YwY5\"}"
+  },
+  {
+    "slug": "sapa",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTszjo49taezMmtZNAi\"}"
+  },
+  {
+    "slug": "nha-trang",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTtAPin2ZRnV4kh7ykf\"}"
+  },
+  {
+    "slug": "hue",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTtL4dx79FXLU3mnPn2\"}"
+  },
+  {
+    "slug": "da-lat",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTtVi4zcuH2YY47ah5f\"}"
+  },
+  {
+    "slug": "ninh-binh",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTtfVSCro7oSpkRbvWq\"}"
+  },
+  {
+    "slug": "mui-ne",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTtq7NxDr4N6VYxgAmL\"}"
+  },
+  {
+    "slug": "phong-nha",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTtzo3THmq6Jx1Y9wAx\"}"
+  },
+  {
+    "slug": "mekong-delta",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTuAYvMq4DyAM9HoTF7\"}"
+  },
+  {
+    "slug": "cat-ba",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTuLXSof47B8PMaTEEu\"}"
+  },
+  {
+    "slug": "ha-giang",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTuW8u6xhGfnmNmMWSy\"}"
+  },
+  {
+    "slug": "quy-nhon",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTufrJDFAabWZynJAgP\"}"
+  },
+  {
+    "slug": "con-dao",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTuqdAhxaum4mg2u6Cj\"}"
+  },
+  {
+    "slug": "vung-tau",
+    "status": "error",
+    "error": "Failed to generate article: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CXWTv1FMvwjYV1VA4GEiA\"}"
+  }
+]

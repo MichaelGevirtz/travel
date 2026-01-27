@@ -9,6 +9,7 @@
     "lint": "next lint",
     "seed": "tsx scripts/seed.ts",
     "download-images": "tsx scripts/download-images.ts",
+    "generate-articles": "tsx --env-file=.env.local scripts/generate-all-articles.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:watch": "vitest --watch",
