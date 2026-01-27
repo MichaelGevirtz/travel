@@ -131,7 +131,7 @@ export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) 
             <h3>Choosing Your Duration</h3>
             <ul>
               <li><strong>1 week:</strong> Focus on one region. Enough for Hanoi + Ha Long Bay, or HCMC + Mekong + beach.</li>
-              <li><strong>2 weeks:</strong> Cover two regions comfortably. The classic North-to-Central or Central-to-South routes.</li>
+              <li><strong>2 weeks:</strong> Cover two regions comfortably. The classic North-to-South or South-to-North routes.</li>
               <li><strong>3 weeks:</strong> Experience all of Vietnam. From Hanoi's ancient streets to Phu Quoc's beaches.</li>
             </ul>
 
