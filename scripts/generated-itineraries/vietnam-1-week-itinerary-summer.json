@@ -1,0 +1,91 @@
+{
+  "slug": "vietnam-1-week-itinerary-summer",
+  "title": "Vietnam 1-Week Itinerary – Summer 2026",
+  "excerpt": "Beat the heat with this 7-day North Vietnam mountain escape. Hanoi and Sapa offer cooler temperatures and stunning rice terraces during May-August.",
+  "content": "# Vietnam 1-Week Itinerary – Summer 2026\n\nSummer in Vietnam means heat and humidity — but the mountains offer escape. This 7-day route pairs Hanoi's cultural highlights with Sapa's cool mountain air and emerald rice terraces. You'll trade beach crowds for misty peaks and hill tribe villages.\n\n## Quick Facts\n\n- **Duration:** 7 days / 6 nights\n- **Best Months:** May through August\n- **Region:** North Vietnam (mountains)\n- **Internal Flights:** 0\n- **Pace:** Balanced\n- **Budget Range:** $45-90 per day\n\n## Why Summer Works\n\nWhile lowland Vietnam swelters at 35°C+, Sapa sits at 1,500 meters elevation with temperatures of 20-25°C. Summer is rice-growing season — the terraces glow bright green, and waterfalls run full from afternoon rains. Expect brief showers (usually 2-4pm), but mornings and evenings are clear.\n\n## Route Overview\n\n**Entry/Exit:** Hanoi (Noi Bai Airport)\n**Direction:** Hanoi → Mountains → Hanoi\n\n```\nHanoi (2 nights) → Sapa (3 nights) → Hanoi (1 night, fly out)\n```\n\n## Day-by-Day Itinerary\n\n### [Hanoi](/vietnam/destinations/hanoi) (2 nights)\n\nArrive and acclimatize to Vietnam. Summer in Hanoi is hot but manageable — explore early morning and evening, rest midday. The Old Quarter's shaded streets and iced coffee culture make sense now.\n\nVisit Hoan Kiem Lake at dawn when locals exercise. Spend late afternoon at the Temple of Literature. Evening: street food in the Old Quarter — summer means cold bia hoi (fresh beer) on tiny plastic chairs.\n\n**Highlights:** Old Quarter, Temple of Literature, street food, iced coffee culture\n\n### [Sapa](/vietnam/destinations/sapa) (3 nights)\n\nTake the overnight train or morning bus to Sapa (5-6 hours). The temperature drops as you climb — pack a light jacket for evenings.\n\nThree nights gives you time for serious trekking. Day one: hike to Cat Cat Village and the waterfall. Day two: full-day trek through rice terraces to Ta Van village, possibly with a homestay. Day three: explore Sapa town, visit the local market, or take a shorter walk to Ta Phin village.\n\nSummer's afternoon rains make waterproof gear essential, but the rice terraces are at their most photogenic — brilliant green against misty mountains.\n\n*Travel from Hanoi: Overnight train (8 hours, $35-50) or bus (5-6 hours, $15-25).*\n\n**Highlights:** Rice terrace trekking, hill tribe villages, cooler temperatures\n\n### Hanoi (1 night)\n\nReturn to Hanoi for your final night. If you took the overnight train up, consider the day bus back for the mountain scenery. Use your last evening for anything you missed — or revisit your favorite pho spot.\n\n*Travel from Sapa: Bus (5-6 hours) or overnight train.*\n\n## Why This Itinerary Works\n\n**Weather:** Sapa's elevation means 20-25°C when Hanoi hits 35°C. Afternoon rains are predictable — plan treks for morning.\n\n**Rice terraces:** Summer is growing season. The terraces are flooded and bright green — the most photogenic time of year.\n\n**Pacing:** Three nights in Sapa allows proper trekking without exhaustion. One night back in Hanoi ensures you don't miss your flight.\n\n## Adjustments\n\n**Less trekking:** Replace one Sapa trek day with the Fansipan cable car for mountain views without the effort.\n\n**More adventure:** Add [Ha Giang](/vietnam/destinations/ha-giang) instead — it's further (6-7 hours) but even more dramatic. You'll need 4 days minimum for the loop.\n\n**If rain is heavy:** Sapa treks still operate in rain, but visibility drops. Focus on village visits and local markets instead of viewpoint hikes.\n\n## FAQ\n\n**Is summer a good time for Vietnam?**\n\nFor mountains, yes. Sapa and the north highlands are cooler and green. For beaches or central Vietnam, spring or winter is better.\n\n**What should I pack for Sapa in summer?**\n\nLight layers, a rain jacket, and sturdy walking shoes. Mornings are cool (18°C), afternoons warm, evenings cool again. Rain is almost daily but brief.\n\n**Is the overnight train worth it?**\n\nYes — it saves a hotel night and the experience is memorable. Book a 4-berth cabin for more space. The train arrives in Lao Cai; buses shuttle you to Sapa (1 hour).\n\n**Can I skip Hanoi and go straight to Sapa?**\n\nPossible but not recommended. Hanoi is worth 2 days, and you'll need to transit through anyway. Use it to adjust to Vietnam before heading to the mountains.",
+  "metaTitle": "Vietnam 1-Week Itinerary Summer 2026 | Sapa Mountains Escape",
+  "metaDescription": "Beat Vietnam's summer heat with this 7-day mountain itinerary. Hanoi and Sapa with cooler temperatures and green rice terraces. May-August guide.",
+  "keywords": [
+    "vietnam summer itinerary",
+    "sapa summer",
+    "vietnam 1 week summer",
+    "vietnam mountains trip",
+    "hanoi sapa itinerary",
+    "vietnam rice terraces",
+    "vietnam may june july august",
+    "north vietnam summer"
+  ],
+  "canonicalUrl": "https://vietnamtravel.com/vietnam/itineraries/vietnam-1-week-itinerary-summer",
+  "ogImage": "/images/itineraries/vietnam-1-week-summer.jpg",
+  "author": "Vietnam Travel Guide",
+  "itineraryMeta": {
+    "duration": "1-week",
+    "days": 7,
+    "season": "summer",
+    "months": ["May", "June", "July", "August"],
+    "regions": ["north"],
+    "internalFlights": 0,
+    "pace": "balanced",
+    "budgetRange": {
+      "min": 45,
+      "max": 90,
+      "currency": "USD",
+      "perDay": true
+    }
+  },
+  "route": {
+    "entryCity": "hanoi",
+    "exitCity": "hanoi",
+    "direction": "loop",
+    "stops": [
+      {
+        "slug": "hanoi",
+        "nights": 2,
+        "dayTrips": []
+      },
+      {
+        "slug": "sapa",
+        "nights": 3,
+        "dayTrips": []
+      },
+      {
+        "slug": "hanoi",
+        "nights": 1,
+        "dayTrips": []
+      }
+    ]
+  },
+  "contentMeta": {
+    "wordCount": 750,
+    "readingTime": 4,
+    "internalLinks": [
+      "/vietnam/destinations/hanoi",
+      "/vietnam/destinations/sapa",
+      "/vietnam/destinations/ha-giang"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Is summer a good time for Vietnam?",
+      "answer": "For mountains, yes. Sapa and the north highlands are cooler and green. For beaches or central Vietnam, spring or winter is better."
+    },
+    {
+      "question": "What should I pack for Sapa in summer?",
+      "answer": "Light layers, a rain jacket, and sturdy walking shoes. Mornings are cool (18°C), afternoons warm, evenings cool again. Rain is almost daily but brief."
+    },
+    {
+      "question": "Is the overnight train worth it?",
+      "answer": "Yes — it saves a hotel night and the experience is memorable. Book a 4-berth cabin for more space. The train arrives in Lao Cai; buses shuttle you to Sapa (1 hour)."
+    },
+    {
+      "question": "Can I skip Hanoi and go straight to Sapa?",
+      "answer": "Possible but not recommended. Hanoi is worth 2 days, and you'll need to transit through anyway. Use it to adjust to Vietnam before heading to the mountains."
+    }
+  ],
+  "status": "draft",
+  "publishedAt": null,
+  "agentWorkflow": {
+    "generatedBy": "agent",
+    "generatedAt": "2026-01-27T00:00:00.000Z"
+  }
+}

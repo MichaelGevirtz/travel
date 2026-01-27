@@ -68,10 +68,41 @@ export interface GuideCardData {
 export interface ItineraryCardData {
   slug: string;
   title: string;
-  duration: string;
+  duration: "1-week" | "2-week" | "3-week";
+  days: number;
+  season: "spring" | "summer" | "autumn" | "winter";
   description: string;
   image: string;
-  highlights: string[];
+  regions: ("north" | "central" | "south")[];
+  stops: string[];
+  pace: "relaxed" | "balanced" | "active";
+}
+
+export interface ItineraryFullData extends ItineraryCardData {
+  excerpt: string;
+  content: string;
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string[];
+  months: string[];
+  internalFlights: number;
+  budgetRange: {
+    min: number;
+    max: number;
+    currency: string;
+    perDay: boolean;
+  };
+  route: {
+    entryCity: string;
+    exitCity: string;
+    direction: string;
+    stops: {
+      slug: string;
+      nights: number;
+      dayTrips: string[];
+    }[];
+  };
+  faq: { question: string; answer: string }[];
 }
 
 export interface HotelRecommendation {

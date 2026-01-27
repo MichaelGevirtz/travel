@@ -8,7 +8,8 @@ These agents work together to create, review, and validate travel articles:
 
 | Agent | File | Purpose |
 |-------|------|---------|
-| **Writer** | [writer-agent.md](writer-agent.md) | Generates comprehensive travel guides |
+| **Destination Writer** | [writer-agent.md](writer-agent.md) | Generates comprehensive destination guides |
+| **Itinerary Writer** | [itinerary-writer-agent.md](itinerary-writer-agent.md) | Creates season-aware travel itineraries |
 | **Editor** | [editor-agent.md](editor-agent.md) | Reviews articles for quality and compliance |
 | **SEO Validator** | [seo-validator-agent.md](seo-validator-agent.md) | Validates SEO best practices |
 
@@ -54,6 +55,17 @@ lib/services/agents/
 ├── seoValidatorAgent.ts   # SEO validator service
 └── contentOrchestrator.ts # Pipeline orchestrator
 ```
+
+## Shared Knowledge Files
+
+Both writers reference these shared knowledge files:
+
+| File | Purpose |
+|------|---------|
+| [writing-style.md](../knowledge/writing-style.md) | Voice, tone, banned phrases |
+| [vietnam-regions.md](../knowledge/vietnam-regions.md) | Regions, distances, seasons |
+| [seo-fundamentals.md](../knowledge/seo-fundamentals.md) | SEO principles |
+| [seo-article-checklist.md](../knowledge/seo-article-checklist.md) | Validation rules |
 
 ## Related Documentation
 

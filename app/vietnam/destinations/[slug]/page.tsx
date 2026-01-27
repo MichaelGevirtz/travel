@@ -12,7 +12,9 @@ import {
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout";
 import { DestinationCard } from "@/components/destinations";
+import { ItineraryCard } from "@/components/itineraries";
 import { allDestinations } from "@/lib/constants/destinations";
+import { getItinerariesByDestination } from "@/lib/constants/itineraries";
 import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
@@ -123,6 +125,9 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
   const relatedDestinations = allDestinations
     .filter((d) => d.region === destination.region && d.slug !== destination.slug)
     .slice(0, 4);
+
+  // Get itineraries that include this destination
+  const relatedItineraries = getItinerariesByDestination(params.slug).slice(0, 3);
 
   const breadcrumbs = [
     { label: "Vietnam", href: "/vietnam" },
@@ -487,6 +492,38 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
                   </li>
                 </ul>
               </div>
+
+              {/* Itineraries Including This Destination */}
+              {relatedItineraries.length > 0 && (
+                <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+                  <h3 className="font-bold text-gray-900 mb-4">
+                    Itineraries with {destination.name}
+                  </h3>
+                  <ul className="space-y-3">
+                    {relatedItineraries.map((itinerary) => (
+                      <li key={itinerary.slug}>
+                        <Link
+                          href={`/vietnam/itineraries/${itinerary.slug}`}
+                          className="block group"
+                        >
+                          <span className="text-emerald-600 group-hover:text-emerald-700 text-sm font-medium">
+                            {itinerary.title.replace(" – ", " ")} →
+                          </span>
+                          <span className="block text-xs text-gray-500 mt-0.5">
+                            {itinerary.days} days • {itinerary.stops.length} stops
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/vietnam/itineraries"
+                    className="block mt-4 text-center text-sm text-gray-600 hover:text-emerald-600"
+                  >
+                    View all itineraries →
+                  </Link>
+                </div>
+              )}
             </aside>
           </div>
         </div>

@@ -1,0 +1,93 @@
+{
+  "slug": "vietnam-1-week-itinerary-autumn",
+  "title": "Vietnam 1-Week Itinerary – Autumn 2026",
+  "excerpt": "Experience North Vietnam's golden rice harvest season. This 7-day autumn route covers Hanoi, Ha Long Bay, and Ninh Binh with September-November's best weather.",
+  "content": "# Vietnam 1-Week Itinerary – Autumn 2026\n\nAutumn is North Vietnam's golden season — literally. The rice terraces turn yellow before harvest, the summer humidity fades, and clear skies return to Ha Long Bay. This 7-day route captures the north at its most photogenic, while avoiding Central Vietnam's typhoon season entirely.\n\n## Quick Facts\n\n- **Duration:** 7 days / 6 nights\n- **Best Months:** September through November\n- **Region:** North Vietnam only\n- **Internal Flights:** 0\n- **Pace:** Relaxed\n- **Budget Range:** $40-80 per day\n\n## Why Autumn Works\n\nAutumn brings the north's clearest weather — blue skies, low humidity, and temperatures of 20-28°C. It's harvest season: rice paddies glow gold before being cut. Ha Long Bay has calm seas and excellent visibility.\n\n**Important:** Avoid Central Vietnam (Hue, Hoi An, Da Nang) in autumn. September-November is typhoon season there, with flooding and heavy rain. Stick to the north.\n\n## Route Overview\n\n**Entry/Exit:** Hanoi (Noi Bai Airport)\n**Direction:** Loop from Hanoi\n\n```\nHanoi (2 nights) → Ninh Binh (2 nights) → Ha Long Bay (2 nights) → Hanoi (fly out)\n```\n\n## Day-by-Day Itinerary\n\n### [Hanoi](/vietnam/destinations/hanoi) (2 nights)\n\nAutumn Hanoi is perfect walking weather. The Old Quarter's chaos feels manageable at 24°C with low humidity. Spend your first day wandering the 36 streets, sipping egg coffee, and visiting Hoan Kiem Lake.\n\nDay two: the Temple of Literature, Ho Chi Minh Mausoleum, and the excellent Vietnamese Women's Museum. Autumn evenings are cool enough for long dinners — try bun cha at Dac Kim or cha ca at Cha Ca Thang Long.\n\n**Highlights:** Old Quarter, Temple of Literature, autumn weather for walking\n\n### [Ninh Binh](/vietnam/destinations/ninh-binh) (2 nights)\n\nHead south to Ninh Binh when the rice harvest turns the landscape gold. The karst mountains rising from golden paddies create Vietnam's most iconic scenery — and autumn is peak season for it.\n\nRow through Tam Coc's caves with golden rice on both sides. Climb Mua Cave for panoramic harvest views. Cycle the quiet roads around Trang An. The ancient temples of Hoa Lu are less crowded than in spring.\n\n*Travel from Hanoi: 2 hours by bus or private car, $8-15.*\n\n**Highlights:** Golden rice harvest, Tam Coc, Mua Cave viewpoint\n\n### [Ha Long Bay](/vietnam/destinations/ha-long-bay) (2 nights)\n\nContinue to Ha Long Bay (3-4 hours from Ninh Binh). Autumn brings the bay's calmest waters and clearest skies — perfect for kayaking and swimming.\n\nAn overnight cruise takes you deep into the limestone karsts. A 2-night cruise reaches Bai Tu Long Bay, where you'll have caves and beaches nearly to yourself. Return to Hanoi on day 7 for your departure.\n\n*Travel from Ninh Binh: 3-4 hours by car (cruise pickup often included).*\n\n**Highlights:** Clear skies, calm seas, fewer crowds than spring\n\n## Why This Itinerary Works\n\n**Weather:** Autumn is the north's dry season — expect clear skies, 20-28°C, and minimal rain. Perfect for both Ha Long Bay cruises and Ninh Binh cycling.\n\n**Rice harvest:** Late September through October is harvest time. Ninh Binh's paddies turn gold — the most photogenic time of year.\n\n**Avoiding typhoons:** Central Vietnam has storms September-November. This route keeps you safely in the north.\n\n## Adjustments\n\n**For rice harvest photos:** Time your Ninh Binh visit for late September or early October. By November, fields are harvested and brown.\n\n**More mountains:** Swap Ninh Binh for [Sapa](/vietnam/destinations/sapa) to see the mountain rice terraces at harvest. You'll need the overnight train or an early bus.\n\n**Extended trip:** Add 2-3 days in [Ha Giang](/vietnam/destinations/ha-giang) for the famous motorbike loop. Autumn is Ha Giang's best season.\n\n## FAQ\n\n**Why avoid Central Vietnam in autumn?**\n\nTyphoon season. September-November brings heavy rain, flooding, and occasionally destructive storms to Hue, Da Nang, and Hoi An. Flights get cancelled, roads flood. Don't risk it.\n\n**Is autumn peak season?**\n\nFor the north, yes. Expect higher prices and more tourists than summer. Book Ha Long Bay cruises and Ninh Binh hotels 2-3 weeks ahead.\n\n**When exactly is rice harvest?**\n\nLate September through mid-October in Ninh Binh. Sapa's terraces harvest slightly earlier (early September). By November, most rice is cut.\n\n**What about Phu Quoc or the south?**\n\nThe south is transitioning out of monsoon season in autumn. It's fine by November, but for a 1-week trip, the north offers more reliable weather and better scenery.",
+  "metaTitle": "Vietnam 1-Week Itinerary Autumn 2026 | Golden Rice Harvest",
+  "metaDescription": "Experience North Vietnam's golden rice harvest. 7-day autumn itinerary covering Hanoi, Ninh Binh, and Ha Long Bay. September-November guide.",
+  "keywords": [
+    "vietnam autumn itinerary",
+    "vietnam 1 week autumn",
+    "vietnam rice harvest",
+    "north vietnam fall",
+    "vietnam september october november",
+    "ninh binh rice harvest",
+    "vietnam golden rice",
+    "ha long bay autumn"
+  ],
+  "canonicalUrl": "https://vietnamtravel.com/vietnam/itineraries/vietnam-1-week-itinerary-autumn",
+  "ogImage": "/images/itineraries/vietnam-1-week-autumn.jpg",
+  "author": "Vietnam Travel Guide",
+  "itineraryMeta": {
+    "duration": "1-week",
+    "days": 7,
+    "season": "autumn",
+    "months": ["September", "October", "November"],
+    "regions": ["north"],
+    "internalFlights": 0,
+    "pace": "relaxed",
+    "budgetRange": {
+      "min": 40,
+      "max": 80,
+      "currency": "USD",
+      "perDay": true
+    }
+  },
+  "route": {
+    "entryCity": "hanoi",
+    "exitCity": "hanoi",
+    "direction": "loop",
+    "stops": [
+      {
+        "slug": "hanoi",
+        "nights": 2,
+        "dayTrips": []
+      },
+      {
+        "slug": "ninh-binh",
+        "nights": 2,
+        "dayTrips": []
+      },
+      {
+        "slug": "ha-long-bay",
+        "nights": 2,
+        "dayTrips": []
+      }
+    ]
+  },
+  "contentMeta": {
+    "wordCount": 780,
+    "readingTime": 4,
+    "internalLinks": [
+      "/vietnam/destinations/hanoi",
+      "/vietnam/destinations/ninh-binh",
+      "/vietnam/destinations/ha-long-bay",
+      "/vietnam/destinations/sapa",
+      "/vietnam/destinations/ha-giang"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Why avoid Central Vietnam in autumn?",
+      "answer": "Typhoon season. September-November brings heavy rain, flooding, and occasionally destructive storms to Hue, Da Nang, and Hoi An. Flights get cancelled, roads flood. Don't risk it."
+    },
+    {
+      "question": "Is autumn peak season?",
+      "answer": "For the north, yes. Expect higher prices and more tourists than summer. Book Ha Long Bay cruises and Ninh Binh hotels 2-3 weeks ahead."
+    },
+    {
+      "question": "When exactly is rice harvest?",
+      "answer": "Late September through mid-October in Ninh Binh. Sapa's terraces harvest slightly earlier (early September). By November, most rice is cut."
+    },
+    {
+      "question": "What about Phu Quoc or the south?",
+      "answer": "The south is transitioning out of monsoon season in autumn. It's fine by November, but for a 1-week trip, the north offers more reliable weather and better scenery."
+    }
+  ],
+  "status": "draft",
+  "publishedAt": null,
+  "agentWorkflow": {
+    "generatedBy": "agent",
+    "generatedAt": "2026-01-27T00:00:00.000Z"
+  }
+}
