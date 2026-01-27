@@ -7,8 +7,8 @@ export function Hero() {
     <section className="relative h-[70vh] min-h-[500px] md:h-[85vh] md:min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/images/hero-vietnam.jpg"
-        alt="Ha Long Bay at sunset - Vietnam's iconic limestone karsts"
+        src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=1920&q=85"
+        alt="Sapa rice terraces - Vietnam's stunning mountain landscape"
         fill
         priority
         quality={85}
@@ -57,7 +57,7 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-100">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-emerald-400" />
-            <span>Updated for 2025</span>
+            <span>Updated for 2026</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-emerald-400" />
