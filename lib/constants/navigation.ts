@@ -46,16 +46,8 @@ export const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Where to Stay",
-    href: "/vietnam/where-to-stay",
-  },
-  {
     label: "Blog",
     href: "/vietnam/blog",
-  },
-  {
-    label: "Deals",
-    href: "/vietnam/deals",
   },
   {
     label: "About",

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { navItems } from "@/lib/constants/navigation";
 
 export function Navigation() {
@@ -133,15 +133,8 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Desktop Actions - Search + CTA */}
+          {/* Desktop Actions - CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <button
-              aria-label="Search"
-              className="p-2 text-gray-700 hover:text-emerald-600 transition-colors rounded-lg hover:bg-gray-50"
-            >
-              <Search className="h-5 w-5" />
-            </button>
-
             <Link
               href="/vietnam/itineraries"
               className="px-4 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-lg hover:bg-emerald-700 transition-colors shadow-sm hover:shadow-md"
@@ -232,16 +225,6 @@ export function Navigation() {
 
                   {/* Mobile Actions */}
                   <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
-                    <button
-                      className="w-full px-4 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-lg flex items-center gap-3 transition-colors"
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      <Search className="h-5 w-5" />
-                      <span className="font-medium">Search</span>
-                    </button>
-
                     <Link
                       href="/vietnam/itineraries"
                       className="block w-full px-4 py-3 bg-emerald-600 text-white text-center font-semibold rounded-lg hover:bg-emerald-700 transition-colors shadow-sm"

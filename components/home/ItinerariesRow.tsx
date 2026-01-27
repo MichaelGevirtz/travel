@@ -4,7 +4,7 @@ import { Clock, ArrowRight } from "lucide-react";
 
 const itineraries = [
   {
-    slug: "1-week",
+    slug: "vietnam-1-week-itinerary-winter",
     title: "1 Week Highlights",
     duration: "7 days",
     description: "Perfect introduction to Vietnam covering Hanoi, Ha Long Bay, and Ho Chi Minh City.",
@@ -12,7 +12,7 @@ const itineraries = [
     route: "North to South",
   },
   {
-    slug: "2-weeks",
+    slug: "vietnam-2-week-itinerary-spring",
     title: "2 Week Classic",
     duration: "14 days",
     description: "The classic route from Hanoi to Saigon with stops in Hoi An, Hue, and more.",
@@ -20,7 +20,7 @@ const itineraries = [
     route: "North to South",
   },
   {
-    slug: "3-weeks",
+    slug: "vietnam-3-week-itinerary-autumn",
     title: "3 Week Complete",
     duration: "21 days",
     description: "Experience everything Vietnam has to offer with time to explore hidden gems.",

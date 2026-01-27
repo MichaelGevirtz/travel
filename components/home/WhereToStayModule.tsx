@@ -75,7 +75,7 @@ export function WhereToStayModule() {
             </p>
           </div>
           <Link
-            href="/vietnam/where-to-stay"
+            href="/vietnam/blog"
             className="hidden md:inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors mt-4 md:mt-0"
           >
             Full accommodation guide
@@ -123,7 +123,7 @@ export function WhereToStayModule() {
                   </td>
                   <td className="px-6 py-4 text-right">
                     <Link
-                      href={pick.href}
+                      href="/vietnam/blog"
                       className="inline-flex items-center text-emerald-600 font-medium text-sm hover:text-emerald-700 transition-colors"
                     >
                       View guide
@@ -141,7 +141,7 @@ export function WhereToStayModule() {
           {hotelPicks.map((pick, index) => (
             <Link
               key={index}
-              href={pick.href}
+              href="/vietnam/blog"
               className="block bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-start justify-between mb-2">
@@ -160,7 +160,7 @@ export function WhereToStayModule() {
 
         <div className="mt-8 text-center md:hidden">
           <Link
-            href="/vietnam/where-to-stay"
+            href="/vietnam/blog"
             className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors"
           >
             Full accommodation guide

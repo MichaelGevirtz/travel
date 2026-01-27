@@ -7,7 +7,7 @@ export function Hero() {
     <section className="relative h-[70vh] min-h-[500px] md:h-[85vh] md:min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=1920&q=85"
+        src="/images/homepage.jpg"
         alt="Sapa rice terraces - Vietnam's stunning mountain landscape"
         fill
         priority
@@ -16,15 +16,18 @@ export function Hero() {
         sizes="100vw"
       />
 
-      {/* Gradient Overlay - ensures text readability on any image */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/60 via-gray-900/40 to-gray-900/60" />
+      {/* Base Overlay - light vignette to keep image feeling open and scenic */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/25 via-transparent to-gray-900/30" />
+
+      {/* Headline Readability Overlay - subtle top-to-center gradient behind text */}
+      <div className="absolute inset-x-0 top-0 h-[65%] bg-gradient-to-b from-gray-900/30 via-gray-900/20 to-transparent" />
 
       {/* Content Container */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main Headline - Refactoring UI: Size + weight for hierarchy */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
           Your Complete Guide to{" "}
-          <span className="text-emerald-400">Vietnam Travel</span>
+          <span className="text-[#52c9a0]">Vietnam Travel</span>
         </h1>
 
         {/* Subheading - Don't Make Me Think: Clear value proposition */}
@@ -38,7 +41,7 @@ export function Hero() {
           {/* Primary CTA - Von Restorff Effect: Stands out with color */}
           <Link
             href="/vietnam/destinations"
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-emerald-400 rounded-lg hover:bg-emerald-500 transition-colors shadow-lg hover:shadow-xl group"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-[#52c9a0] rounded-lg hover:bg-[#45b892] transition-colors shadow-lg hover:shadow-xl group"
           >
             Explore Destinations
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -56,15 +59,15 @@ export function Hero() {
         {/* Trust Signals - Conversion Optimization: Reciprocity principle */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-100">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+            <CheckCircle2 className="h-5 w-5 text-[#52c9a0]" />
             <span>Updated for 2026</span>
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+            <CheckCircle2 className="h-5 w-5 text-[#52c9a0]" />
             <span>50+ Destinations Covered</span>
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+            <CheckCircle2 className="h-5 w-5 text-[#52c9a0]" />
             <span>Used by 120K+ Travelers</span>
           </div>
         </div>
