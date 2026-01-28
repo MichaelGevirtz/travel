@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { FileText, Plane, Sun, Train, DollarSign, ArrowRight } from "lucide-react";
+import { FileText, Sun, Train, DollarSign, ArrowRight, Smartphone, Shield } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout";
 
 export const metadata: Metadata = {
@@ -46,6 +46,22 @@ const guides = [
     icon: DollarSign,
     color: "text-emerald-500",
     bgColor: "bg-emerald-50",
+  },
+  {
+    title: "SIM & eSIM",
+    description: "Mobile data options, eSIM providers, and staying connected.",
+    href: "/vietnam/guides/sim-esim",
+    icon: Smartphone,
+    color: "text-purple-500",
+    bgColor: "bg-purple-50",
+  },
+  {
+    title: "Safety & Scams",
+    description: "Common scams to avoid and general safety tips.",
+    href: "/vietnam/guides/safety-scams",
+    icon: Shield,
+    color: "text-red-500",
+    bgColor: "bg-red-50",
   },
 ];
 
