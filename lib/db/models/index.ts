@@ -4,3 +4,4 @@ export { ItineraryModel, type IItinerary, type ItineraryMeta, type ItineraryRout
 export { AgentTaskModel, type IAgentTask, type EstimatedImpact, type ActualResult } from "./AgentTask";
 export { AnalyticsDailyModel, type IAnalyticsDaily, type DailySources, type TimeOnPageBuckets, type CoreWebVitals } from "./AnalyticsDaily";
 export { SiteConfigModel, getSiteConfig, type ISiteConfig, type FeatureFlags, type AffiliateConfig } from "./SiteConfig";
+export { SubscriberModel, type ISubscriber } from "./Subscriber";

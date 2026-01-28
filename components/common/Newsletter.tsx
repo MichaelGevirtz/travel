@@ -22,15 +22,25 @@ export function Newsletter() {
     setStatus("loading");
 
     try {
-      // TODO: Implement actual newsletter subscription
-      // For now, simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
 
       setStatus("success");
       setEmail("");
-    } catch {
+    } catch (err) {
       setStatus("error");
-      setErrorMessage("Something went wrong. Please try again.");
+      setErrorMessage(
+        err instanceof Error ? err.message : "Something went wrong. Please try again."
+      );
     }
   };
 
@@ -52,7 +62,7 @@ export function Newsletter() {
         {status === "success" ? (
           <div className="flex items-center justify-center gap-2 text-emerald-400">
             <CheckCircle className="h-5 w-5" />
-            <span>Thanks for subscribing! Check your inbox to confirm.</span>
+            <span>Thanks for subscribing!</span>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
