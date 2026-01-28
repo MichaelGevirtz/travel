@@ -123,3 +123,12 @@ export interface BreadcrumbItem {
   label: string;
   href?: string;
 }
+
+export interface VideoCardData {
+  id: string;
+  title: string;
+  channelName: string;
+  description: string;
+  duration: string;
+  category: "tips" | "guide" | "vlog" | "food";
+}

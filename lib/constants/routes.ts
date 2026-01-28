@@ -25,6 +25,7 @@ export const staticRoutes = [
   "/vietnam/guides/costs-budget",
   "/vietnam/guides/sim-esim",
   "/vietnam/guides/safety-scams",
+  "/vietnam/tips",
 ] as const;
 
 // Dynamic route patterns (regex)
