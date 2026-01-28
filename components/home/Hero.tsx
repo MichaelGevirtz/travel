@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { allDestinations } from "@/lib/constants/destinations";
 
 export function Hero() {
   return (
@@ -64,7 +65,7 @@ export function Hero() {
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-[#52c9a0]" />
-            <span>50+ Destinations Covered</span>
+            <span>{allDestinations.length}+ Destinations Covered</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-[#52c9a0]" />
