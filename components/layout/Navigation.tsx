@@ -110,23 +110,25 @@ export function Navigation() {
 
                 {/* Dropdown Menu - Desktop */}
                 {item.hasDropdown && activeDropdown === item.href && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 animate-in">
-                    {item.dropdownItems?.map((dropdownItem) => (
-                      <Link
-                        key={dropdownItem.href}
-                        href={dropdownItem.href}
-                        className="block px-4 py-3 hover:bg-gray-50 transition-colors"
-                      >
-                        <div className="font-medium text-gray-900 text-sm">
-                          {dropdownItem.label}
-                        </div>
-                        {dropdownItem.description && (
-                          <div className="text-xs text-gray-500 mt-0.5">
-                            {dropdownItem.description}
+                  <div className="absolute top-full left-0 pt-2 w-64">
+                    <div className="bg-white rounded-lg shadow-xl border border-gray-200 py-2">
+                      {item.dropdownItems?.map((dropdownItem) => (
+                        <Link
+                          key={dropdownItem.href}
+                          href={dropdownItem.href}
+                          className="block px-4 py-3 hover:bg-gray-50 transition-colors"
+                        >
+                          <div className="font-medium text-gray-900 text-sm">
+                            {dropdownItem.label}
                           </div>
-                        )}
-                      </Link>
-                    ))}
+                          {dropdownItem.description && (
+                            <div className="text-xs text-gray-500 mt-0.5">
+                              {dropdownItem.description}
+                            </div>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
