@@ -1,0 +1,36 @@
+# Project Guidelines for Claude Code
+
+## Link Validation Rules
+
+When adding or modifying links in this project, follow these rules to prevent broken links:
+
+### Adding a New Route
+- Add static routes to `staticRoutes` array in `lib/constants/routes.ts`
+- For dynamic routes, ensure the pattern is covered in `dynamicRoutePatterns`
+
+### Adding a New Guide
+- Add the slug to `guideSlugs` array in `lib/constants/routes.ts`
+- Add the guide page to `app/vietnam/guides/[slug]/` or as a static page
+
+### Adding a New Destination
+- Add the destination object to `allDestinations` in `lib/constants/destinations.ts`
+- Include all required fields: slug, name, description, image, imageAlt, region, type, highlights
+
+### Adding a New Itinerary
+- Add the slug to `itinerarySlugs` array in `lib/constants/routes.ts`
+
+### Adding Components with Links
+- Add test coverage in `tests/integration/broken-links.test.ts` for any new component that contains links
+- Import the link data and validate against `isValidRoute()` and `hasActualContent()`
+
+### Before Committing
+- Run `npm test` to verify all link validation tests pass
+- Any broken link will cause test failures
+
+## Project Structure
+
+- Route registry: `lib/constants/routes.ts`
+- Destinations data: `lib/constants/destinations.ts`
+- Navigation links: `lib/constants/navigation.ts`
+- Link validation tests: `tests/unit/link-validation.test.ts`
+- Integration link tests: `tests/integration/broken-links.test.ts`

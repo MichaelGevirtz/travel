@@ -1,4 +1,3 @@
-import { describe, it, expect } from 'vitest';
 import {
   navItems,
   footerDestinations,
@@ -9,9 +8,9 @@ import {
 
 describe('Navigation Constants', () => {
   describe('navItems', () => {
-    // Hick's Law - exactly 7 items
-    it('contains exactly 7 navigation items per Hick\'s Law', () => {
-      expect(navItems).toHaveLength(7);
+    // Hick's Law - 5 items (streamlined navigation)
+    it('contains exactly 5 navigation items', () => {
+      expect(navItems).toHaveLength(5);
     });
 
     // Required fields

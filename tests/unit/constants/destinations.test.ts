@@ -1,4 +1,3 @@
-import { describe, it, expect } from 'vitest';
 import { featuredDestinations, allDestinations } from '@/lib/constants/destinations';
 
 describe('Destinations Constants', () => {

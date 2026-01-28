@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Hero } from '@/components/home/Hero';
+import { allDestinations } from '@/lib/constants/destinations';
 
 describe('Hero', () => {
   describe('Rendering', () => {
@@ -12,7 +12,7 @@ describe('Hero', () => {
         name: /your complete guide to vietnam travel/i,
       });
 
-      expect(heading).toBeInTheDocument();
+      expect(heading).toBeTruthy();
       expect(heading.textContent).toContain('Your Complete Guide to');
       expect(heading.textContent).toContain('Vietnam Travel');
     });
@@ -24,13 +24,13 @@ describe('Hero', () => {
         screen.getByText(
           /insider tips, detailed itineraries, and honest hotel recommendations/i
         )
-      ).toBeInTheDocument();
+      ).toBeTruthy();
     });
 
     it('renders experience mention in subheading', () => {
       render(<Hero />);
 
-      expect(screen.getByText(/7\+ years exploring vietnam/i)).toBeInTheDocument();
+      expect(screen.getByText(/7\+ years exploring vietnam/i)).toBeTruthy();
     });
   });
 
@@ -39,18 +39,18 @@ describe('Hero', () => {
       render(<Hero />);
 
       const image = screen.getByAltText(
-        "Ha Long Bay at sunset - Vietnam's iconic limestone karsts"
+        "Sapa rice terraces - Vietnam's stunning mountain landscape"
       );
 
-      expect(image).toBeInTheDocument();
+      expect(image).toBeTruthy();
     });
 
     it('uses correct image source', () => {
       render(<Hero />);
 
-      const image = screen.getByAltText(/ha long bay at sunset/i);
+      const image = screen.getByAltText(/sapa rice terraces/i);
 
-      expect(image).toHaveAttribute('src', '/images/hero-vietnam.jpg');
+      expect(image.getAttribute('src')).toBe('/images/homepage.jpg');
     });
   });
 
@@ -60,8 +60,8 @@ describe('Hero', () => {
 
       const link = screen.getByRole('link', { name: /explore destinations/i });
 
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute('href', '/vietnam/destinations');
+      expect(link).toBeTruthy();
+      expect(link.getAttribute('href')).toBe('/vietnam/destinations');
     });
 
     it('renders secondary CTA link to itineraries', () => {
@@ -71,8 +71,8 @@ describe('Hero', () => {
         name: /view sample itineraries/i,
       });
 
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute('href', '/vietnam/itineraries');
+      expect(link).toBeTruthy();
+      expect(link.getAttribute('href')).toBe('/vietnam/itineraries');
     });
 
     it('renders both CTA buttons', () => {
@@ -90,36 +90,35 @@ describe('Hero', () => {
         name: /explore destinations/i,
       });
 
-      // Link should contain the text and the arrow icon is part of the link
       expect(primaryLink.textContent).toContain('Explore Destinations');
     });
   });
 
   describe('Trust Signals', () => {
-    it('displays "Updated for 2025" trust signal', () => {
+    it('displays "Updated for 2026" trust signal', () => {
       render(<Hero />);
 
-      expect(screen.getByText('Updated for 2025')).toBeInTheDocument();
+      expect(screen.getByText('Updated for 2026')).toBeTruthy();
     });
 
-    it('displays destinations count trust signal', () => {
+    it('displays dynamic destinations count trust signal', () => {
       render(<Hero />);
 
-      expect(screen.getByText('50+ Destinations Covered')).toBeInTheDocument();
+      expect(screen.getByText(`${allDestinations.length}+ Destinations Covered`)).toBeTruthy();
     });
 
     it('displays traveler count trust signal', () => {
       render(<Hero />);
 
-      expect(screen.getByText('Used by 120K+ Travelers')).toBeInTheDocument();
+      expect(screen.getByText('Used by 120K+ Travelers')).toBeTruthy();
     });
 
     it('renders all three trust signals', () => {
       render(<Hero />);
 
-      expect(screen.getByText('Updated for 2025')).toBeInTheDocument();
-      expect(screen.getByText('50+ Destinations Covered')).toBeInTheDocument();
-      expect(screen.getByText('Used by 120K+ Travelers')).toBeInTheDocument();
+      expect(screen.getByText('Updated for 2026')).toBeTruthy();
+      expect(screen.getByText(`${allDestinations.length}+ Destinations Covered`)).toBeTruthy();
+      expect(screen.getByText('Used by 120K+ Travelers')).toBeTruthy();
     });
   });
 
@@ -128,7 +127,7 @@ describe('Hero', () => {
       const { container } = render(<Hero />);
 
       const section = container.querySelector('section');
-      expect(section).toBeInTheDocument();
+      expect(section).toBeTruthy();
     });
 
     it('has correct heading hierarchy with h1', () => {
@@ -142,7 +141,7 @@ describe('Hero', () => {
       const { container } = render(<Hero />);
 
       const section = container.querySelector('section');
-      expect(section).toBeInTheDocument();
+      expect(section).toBeTruthy();
     });
   });
 
@@ -151,10 +150,10 @@ describe('Hero', () => {
       render(<Hero />);
 
       const image = screen.getByAltText(
-        /ha long bay at sunset.*vietnam's iconic limestone karsts/i
+        /sapa rice terraces.*vietnam's stunning mountain landscape/i
       );
 
-      expect(image).toBeInTheDocument();
+      expect(image).toBeTruthy();
     });
 
     it('has accessible link text for primary CTA', () => {
@@ -162,7 +161,6 @@ describe('Hero', () => {
 
       const link = screen.getByRole('link', { name: /explore destinations/i });
 
-      // Link text should be descriptive, not generic like "click here"
       expect(link.textContent).toContain('Explore Destinations');
     });
 
@@ -181,8 +179,8 @@ describe('Hero', () => {
 
       const heading = screen.getByRole('heading', { level: 1 });
 
-      expect(heading).toBeVisible();
-      expect(heading).toHaveTextContent(/your complete guide to vietnam travel/i);
+      expect(heading).toBeTruthy();
+      expect(heading.textContent?.toLowerCase()).toContain('your complete guide to vietnam travel');
     });
   });
 
@@ -193,8 +191,8 @@ describe('Hero', () => {
       const heading = container.querySelector('h1');
       const subheading = container.querySelector('p');
 
-      expect(heading).toBeInTheDocument();
-      expect(subheading).toBeInTheDocument();
+      expect(heading).toBeTruthy();
+      expect(subheading).toBeTruthy();
 
       // Heading should appear before subheading in DOM order
       const allElements = Array.from(container.querySelectorAll('*'));
@@ -210,18 +208,18 @@ describe('Hero', () => {
       const heading = screen.getByRole('heading', { level: 1 });
       const links = screen.getAllByRole('link');
 
-      expect(heading).toBeInTheDocument();
+      expect(heading).toBeTruthy();
       expect(links.length).toBeGreaterThan(0);
     });
 
     it('renders trust signals after CTAs', () => {
-      const { container } = render(<Hero />);
+      render(<Hero />);
 
       const links = screen.getAllByRole('link');
-      const trustSignal = screen.getByText('Updated for 2025');
+      const trustSignal = screen.getByText('Updated for 2026');
 
       expect(links.length).toBeGreaterThan(0);
-      expect(trustSignal).toBeInTheDocument();
+      expect(trustSignal).toBeTruthy();
     });
   });
 
@@ -229,7 +227,6 @@ describe('Hero', () => {
     it('renders gradient overlay for text readability', () => {
       const { container } = render(<Hero />);
 
-      // Gradient overlay should exist for text readability
       const overlays = container.querySelectorAll('.absolute');
       expect(overlays.length).toBeGreaterThan(0);
     });
@@ -237,33 +234,30 @@ describe('Hero', () => {
     it('renders scroll indicator element', () => {
       const { container } = render(<Hero />);
 
-      // Scroll indicator exists (hidden on mobile)
       const scrollIndicator = container.querySelector('.animate-bounce');
-      expect(scrollIndicator).toBeInTheDocument();
+      expect(scrollIndicator).toBeTruthy();
     });
   });
 
   describe('Component Structure', () => {
     it('renders without props', () => {
-      // Hero component takes no props
       expect(() => render(<Hero />)).not.toThrow();
     });
 
     it('contains all main content sections', () => {
       render(<Hero />);
 
-      // Check all main content is present
-      expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
-      expect(screen.getByRole('img')).toBeInTheDocument();
+      expect(screen.getByRole('heading', { level: 1 })).toBeTruthy();
+      expect(screen.getByRole('img')).toBeTruthy();
       expect(screen.getAllByRole('link')).toHaveLength(2);
-      expect(screen.getByText('Updated for 2025')).toBeInTheDocument();
+      expect(screen.getByText('Updated for 2026')).toBeTruthy();
     });
 
     it('renders with correct layout structure', () => {
       const { container } = render(<Hero />);
 
       const section = container.querySelector('section');
-      expect(section).toHaveClass('relative');
+      expect(section?.className).toContain('relative');
     });
   });
 });

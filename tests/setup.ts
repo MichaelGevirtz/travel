@@ -1,14 +1,15 @@
-import '@testing-library/jest-dom';
-import { afterEach } from 'vitest';
-import { cleanup } from '@testing-library/react';
+/// <reference types="vitest/globals" />
+/// <reference types="@testing-library/jest-dom" />
 import React from 'react';
+import '@testing-library/jest-dom/vitest';
+import { cleanup } from '@testing-library/react';
 
-// Cleanup after each test
+// Cleanup after each test (using global afterEach from vitest)
 afterEach(() => {
   cleanup();
 });
 
-// Mock Next.js router
+// Mock Next.js router (using global vi from vitest)
 vi.mock('next/navigation', () => ({
   useRouter() {
     return {
@@ -31,8 +32,7 @@ vi.mock('next/navigation', () => ({
 
 // Mock Next.js Image component
 vi.mock('next/image', () => ({
-  default: (props: any) => {
-    // eslint-disable-next-line jsx-a11y/alt-text
+  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
     return React.createElement('img', props);
   },
 }));
