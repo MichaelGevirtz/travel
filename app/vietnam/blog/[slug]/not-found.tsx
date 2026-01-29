@@ -12,7 +12,7 @@ export default function NotFound() {
           Article Not Found
         </h1>
         <p className="text-gray-600 mb-8">
-          Sorry, we couldn't find the article you're looking for. It may have been
+          Sorry, we couldn&apos;t find the article you&apos;re looking for. It may have been
           removed or the URL might be incorrect.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

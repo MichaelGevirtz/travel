@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
@@ -110,7 +111,7 @@ const extractInternalLinks = (content: string): string[] => {
     }
   }
 
-  return [...new Set(links)]; // Remove duplicates
+  return Array.from(new Set(links)); // Remove duplicates
 };
 
 // Strip markdown code blocks from JSON response

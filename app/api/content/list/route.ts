@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server";
 import { PageModel } from "@/lib/db/models/Page";
 import dbConnect from "@/lib/db/mongodb";

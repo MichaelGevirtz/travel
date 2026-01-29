@@ -74,7 +74,7 @@ export const guideSlugs = [
  */
 export function isValidRoute(href: string): boolean {
   // Remove query params for pattern matching
-  const [path, query] = href.split("?");
+  const [path] = href.split("?");
 
   // Check static routes
   if (staticRoutes.includes(path as (typeof staticRoutes)[number])) {

@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout";
 import { DestinationCard } from "@/components/destinations";
-import { ItineraryCard } from "@/components/itineraries";
 import { allDestinations } from "@/lib/constants/destinations";
 import { getItinerariesByDestination } from "@/lib/constants/itineraries";
 import { getDestinationContent } from "@/lib/constants/destination-content";
@@ -73,7 +72,7 @@ async function getDestinationArticles(destinationSlug: string) {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
     const response = await fetch(
       `${baseUrl}/api/content/by-destination?destination=${destinationSlug}`,
-      { cache: "no-store" }
+      { cache: "force-cache" }
     );
 
     if (!response.ok) {

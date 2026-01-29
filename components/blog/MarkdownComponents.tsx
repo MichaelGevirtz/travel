@@ -1,5 +1,5 @@
 import { Components } from 'react-markdown';
-import { Info, MapPin, DollarSign, Calendar, Clock } from 'lucide-react';
+import { Info, MapPin, DollarSign, Clock } from 'lucide-react';
 
 export const markdownComponents: Components = {
   // Custom list rendering with better spacing
@@ -20,12 +20,6 @@ export const markdownComponents: Components = {
 
   // Paragraph with proper spacing
   p: ({ children }) => {
-    // Check if this is a Quick Facts section (contains strong tags)
-    const childrenArray = Array.isArray(children) ? children : [children];
-    const hasStrongTag = childrenArray.some(
-      (child: any) => child?.type === 'strong' || child?.props?.node?.tagName === 'strong'
-    );
-
     return <p className="mb-6 leading-relaxed text-gray-700">{children}</p>;
   },
 
@@ -83,16 +77,18 @@ export const markdownComponents: Components = {
   },
 
   // Code blocks with better styling
-  code: ({ inline, children }) => {
-    if (inline) {
+  code: ({ children, className }) => {
+    // If there's a className (language-*), it's a code block
+    const isBlock = className?.startsWith('language-');
+    if (isBlock) {
       return (
-        <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono text-gray-800">
+        <code className="block bg-gray-900 text-gray-100 p-4 rounded-lg my-6 overflow-x-auto">
           {children}
         </code>
       );
     }
     return (
-      <code className="block bg-gray-900 text-gray-100 p-4 rounded-lg my-6 overflow-x-auto">
+      <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono text-gray-800">
         {children}
       </code>
     );

@@ -87,7 +87,7 @@ async function generateAllArticles() {
       // Call orchestrator
       const output: OrchestratorOutput = await orchestrateContentGeneration({
         topic,
-        destinationType: mapDestinationType(dest.type),
+        destinationType: mapDestinationType(dest.type || "city"),
         region: dest.region as "north" | "central" | "south",
         availableArticles,
       });
@@ -107,8 +107,8 @@ async function generateAllArticles() {
           status: output.status === "approved" ? "published" : "draft",
           publishedAt: output.status === "approved" ? new Date() : undefined,
           author: output.article.author,
-          destinationType: output.article.destinationType,
-          region: output.article.region,
+          destinationType: output.article.destinationType || undefined,
+          region: output.article.region || undefined,
           geo: output.article.geo,
           contentMeta: {
             readingTime: output.article.contentMeta.readingTime,

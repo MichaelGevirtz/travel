@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { ItineraryGrid } from "@/components/itineraries";
 import { ItineraryFilters } from "@/components/itineraries";
 import { Breadcrumbs } from "@/components/layout";
-import { allItineraries, filterItineraries } from "@/lib/constants/itineraries";
+import { filterItineraries } from "@/lib/constants/itineraries";
 
 export const metadata: Metadata = {
   title: "Vietnam Itineraries | 1, 2 & 3 Week Trip Plans for 2026",
@@ -125,14 +125,14 @@ export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) 
             <p>
               Vietnam stretches over 1,650km from north to south, making route planning essential.
               Our itineraries are designed around two key factors: <strong>how much time you have</strong> and
-              <strong> when you're traveling</strong>.
+              <strong> when you&apos;re traveling</strong>.
             </p>
 
             <h3>Choosing Your Duration</h3>
             <ul>
               <li><strong>1 week:</strong> Focus on one region. Enough for Hanoi + Ha Long Bay, or HCMC + Mekong + beach.</li>
               <li><strong>2 weeks:</strong> Cover two regions comfortably. The classic North-to-South or South-to-North routes.</li>
-              <li><strong>3 weeks:</strong> Experience all of Vietnam. From Hanoi's ancient streets to Phu Quoc's beaches.</li>
+              <li><strong>3 weeks:</strong> Experience all of Vietnam. From Hanoi&apos;s ancient streets to Phu Quoc&apos;s beaches.</li>
             </ul>
 
             <h3>Timing Your Visit</h3>

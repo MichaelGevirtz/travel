@@ -98,8 +98,8 @@ export async function POST(request: NextRequest) {
       author: result.article.author,
 
       // Category
-      destinationType: result.article.destinationType,
-      region: result.article.region,
+      destinationType: result.article.destinationType || undefined,
+      region: result.article.region || undefined,
 
       // Content metadata
       contentMeta: {
@@ -165,10 +165,10 @@ export async function POST(request: NextRequest) {
 
     console.log(`\n🎉 ============================================`);
     console.log(`🎉 ARTICLE SAVED SUCCESSFULLY!`);
-    console.log(`🎉 ID: ${savedPage._id}`);
-    console.log(`🎉 Title: ${savedPage.title}`);
-    console.log(`🎉 Status: ${savedPage.status}`);
-    console.log(`🎉 Word Count: ${savedPage.contentMeta.wordCount}`);
+    console.log(`🎉 ID: ${savedPage?._id}`);
+    console.log(`🎉 Title: ${savedPage?.title}`);
+    console.log(`🎉 Status: ${savedPage?.status}`);
+    console.log(`🎉 Word Count: ${savedPage?.contentMeta?.wordCount}`);
     console.log(`🎉 Score: ${result.finalReview?.overallScore}/100`);
     console.log(`🎉 Iterations: ${result.iterations}`);
     console.log(`🎉 ============================================\n`);

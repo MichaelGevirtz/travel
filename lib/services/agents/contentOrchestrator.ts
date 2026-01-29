@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { generateArticle, WriterInput, WriterOutput } from "./writerAgent";
 import { reviewArticle, EditorOutput } from "./editorAgent";
 import { validateSEO, SEOValidatorOutput } from "./seoValidatorAgent";
@@ -420,7 +422,6 @@ export const orchestrateContentGeneration = async (
 import {
   generateDestinationContent,
   DestinationContentInput,
-  DestinationContentOutput,
 } from "./destinationContentWriter";
 import type { DestinationCardData, DestinationContent } from "@/types";
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Anthropic from "@anthropic-ai/sdk";
 import fs from "fs";
 import path from "path";
@@ -74,7 +75,7 @@ const loadKnowledge = (): string => {
       const filePath = path.join(knowledgePath, file);
       const content = fs.readFileSync(filePath, "utf-8");
       knowledge += `\n\n--- ${file} ---\n\n${content}`;
-    } catch (error) {
+    } catch {
       console.warn(`⚠️ [SEO] Could not load knowledge file: ${file}`);
     }
   }

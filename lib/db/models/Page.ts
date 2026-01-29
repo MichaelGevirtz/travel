@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose, { Schema, Model, Document } from "mongoose";
 import { PAGE_STATUS, DEST_TYPES, VN_REGIONS, AFF_PROVIDERS, AFF_PLACEMENTS } from "../enums";
 import type { PageStatus, DestinationType, VietnamRegion, AffiliateProvider, AffiliatePlacement } from "../enums";
