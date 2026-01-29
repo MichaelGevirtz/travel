@@ -66,8 +66,30 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Production
+- **URL**: https://vietnam-insider.com
+- **Platform**: Vercel
+- **Auto-deploy**: Pushes to `master` branch trigger automatic deployments
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Environment Variables (Vercel)
+| Variable | Description |
+|----------|-------------|
+| `MONGODB_URI` | MongoDB Atlas connection string |
+| `NEXT_PUBLIC_SITE_URL` | `https://vietnam-insider.com` |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics ID |
+| `REVALIDATION_SECRET` | Secret for on-demand revalidation |
+
+### Infrastructure Setup
+1. **Vercel**: Connected to `MichaelGevirtz/travel` GitHub repo
+2. **MongoDB Atlas**: Network access set to `0.0.0.0/0` (required for Vercel's dynamic IPs)
+3. **Cloudflare**: DNS with A record pointing to `216.198.79.1`, SSL mode "Full"
+
+### Deployment Workflow
+```bash
+git add .
+git commit -m "Your changes"
+git push origin master
+# Vercel automatically builds and deploys
+```

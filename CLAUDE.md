@@ -49,3 +49,20 @@ Use `force-cache` for content that rarely changes and refreshes on deploy:
 ### Current Implementation
 - Destination articles: `force-cache` in `app/vietnam/destinations/[slug]/page.tsx:76`
 - Cache clears automatically on each deployment
+
+## Deployment
+
+### Auto-Deploy Pipeline
+- Production deploys automatically when pushing to `master` branch
+- Vercel builds and deploys the site at https://vietnam-insider.com
+- Cache clears on each deployment
+
+### Adding Environment Variables
+- Add to Vercel Dashboard → Settings → Environment Variables
+- For local development, add to `.env.local`
+- Never commit secrets to the repository
+
+### After Deployment Changes
+- Verify the site loads at https://vietnam-insider.com
+- Check MongoDB connection by visiting `/api/destinations`
+- Monitor Vercel deployment logs for errors
