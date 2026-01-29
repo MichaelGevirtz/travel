@@ -28,37 +28,40 @@ This project uses an **AI agent orchestration system** to generate high-quality 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        CONTENT GENERATION FLOW                       │
+│                    CONTENT ORCHESTRATOR                             │
+│                 (lib/services/agents/contentOrchestrator.ts)        │
 └─────────────────────────────────────────────────────────────────────┘
-
-    ┌──────────┐         ┌──────────────┐         ┌──────────────┐
-    │  User    │         │   Writer     │         │   Editor     │
-    │  Input   │────────▶│   Agent      │────────▶│   Agent      │
-    │          │         │              │         │              │
-    └──────────┘         └──────────────┘         └──────────────┘
-         │                      │                        │
-         │                      │                        ▼
-         │                      │               ┌──────────────┐
-         │                      │               │   Decision   │
-         │                      │               │              │
-         │                      │               │ ┌──────────┐ │
-         │                      │               │ │ APPROVE  │ │
-         │                      │               │ └────┬─────┘ │
-         │                      │               │      │       │
-         │                      │               │ ┌────▼─────┐ │
-         │                      │               │ │ REJECT   │ │
-         │                      │               │ └──────────┘ │
-         │                      │               └──────────────┘
-         │                      │                        │
-         │                      │◀───────────────────────┘
-         │                      │     (feedback loop)
-         │                      │
-         │                      ▼
-         │              ┌──────────────┐
-         │              │   MongoDB    │
-         │              │   Storage    │
-         └─────────────▶│              │
-                        └──────────────┘
+                                 │
+                                 ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                                                                     │
+│   ┌──────────────┐    ┌──────────────┐    ┌──────────────────┐     │
+│   │              │    │              │    │                  │     │
+│   │   WRITER     │───▶│   EDITOR     │───▶│  SEO VALIDATOR   │     │
+│   │   AGENT      │    │   AGENT      │    │     AGENT        │     │
+│   │              │    │              │    │                  │     │
+│   └──────────────┘    └──────────────┘    └──────────────────┘     │
+│          │                   │                    │                 │
+│          │                   │                    │                 │
+│          │            ┌──────┴──────┐      ┌──────┴──────┐         │
+│          │            │             │      │             │         │
+│          │            ▼             ▼      ▼             ▼         │
+│          │       APPROVE       REJECT   PASS         FAIL          │
+│          │            │             │      │             │         │
+│          │            └─────┬───────┘      └─────┬───────┘         │
+│          │                  │                    │                 │
+│          │                  ▼                    ▼                 │
+│          │         ┌────────────────────────────────┐              │
+│          │         │   DECISION LOGIC              │              │
+│          │         │   • Both PASS → APPROVED      │              │
+│          │         │   • Any FAIL → REVISE         │              │
+│          │         │   • Max 3 iterations → DRAFT  │              │
+│          │         └────────────────────────────────┘              │
+│          │                        │                                │
+│          ◀────────────────────────┘                                │
+│       (Feedback loop for revisions)                                │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Agent Roles
@@ -78,40 +81,12 @@ Reviews articles and decides whether to approve or reject:
 - **Verifies UX compliance** (scannability, bold usage, list lengths)
 - **Returns score 0-100** with detailed feedback
 
-### Decision Flow
-
-```
-                    ┌─────────────────┐
-                    │  Editor Review  │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │  All criteria   │
-                    │     met?        │
-                    └────────┬────────┘
-                             │
-              ┌──────────────┴──────────────┐
-              │                             │
-       ┌──────▼──────┐               ┌──────▼──────┐
-       │    YES      │               │     NO      │
-       │   APPROVE   │               │   REJECT    │
-       │  Score: 80+ │               │  Score: <80 │
-       └──────┬──────┘               └──────┬──────┘
-              │                             │
-              ▼                             ▼
-       ┌─────────────┐               ┌─────────────┐
-       │  Publish    │               │  Return     │
-       │  Article    │               │  Feedback   │
-       └─────────────┘               └──────┬──────┘
-                                            │
-                                            ▼
-                                     ┌─────────────┐
-                                     │  Writer     │
-                                     │  Revises    │
-                                     └──────┬──────┘
-                                            │
-                                            └──────▶ (retry)
-```
+#### SEO Validator Agent
+Validates SEO compliance:
+- **Meta fields** (title 50-60 chars, description 150-160 chars)
+- **Keywords** (10-15 relevant keywords)
+- **Internal links** (minimum 4 links)
+- **Slug format** (lowercase, hyphens, no special chars)
 
 ### Agent Configuration Files
 
