@@ -132,3 +132,15 @@ export interface VideoCardData {
   duration: string;
   category: "tips" | "guide" | "vlog" | "food";
 }
+
+export interface DestinationContent {
+  status: "placeholder" | "draft" | "published";
+  overview: string[];
+  thingsToDo: string[];
+  gettingAround: {
+    byAir: string;
+    byTrain: string;
+    local: string;
+  };
+  faqs: FAQItem[];
+}

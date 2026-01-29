@@ -413,6 +413,83 @@ export const orchestrateContentGeneration = async (
   }
 };
 
+// ============================================
+// DESTINATION CONTENT ORCHESTRATION
+// ============================================
+
+import {
+  generateDestinationContent,
+  DestinationContentInput,
+  DestinationContentOutput,
+} from "./destinationContentWriter";
+import type { DestinationCardData, DestinationContent } from "@/types";
+
+export interface DestinationOrchestratorInput {
+  destination: DestinationCardData;
+}
+
+export interface DestinationOrchestratorOutput {
+  success: boolean;
+  status: "draft" | "error";
+  content: DestinationContent | null;
+  iterations: number;
+  errorMessage?: string;
+}
+
+// Simplified orchestrator for destination content (no editor/SEO loop for now)
+export const orchestrateDestinationContent = async (
+  input: DestinationOrchestratorInput
+): Promise<DestinationOrchestratorOutput> => {
+  console.log("\n🤖 ============================================");
+  console.log(`🤖 Starting destination content generation: "${input.destination.name}"`);
+  console.log(`🤖 Slug: ${input.destination.slug}`);
+  console.log(`🤖 Region: ${input.destination.region}, Type: ${input.destination.type}`);
+  console.log("🤖 ============================================\n");
+
+  try {
+    // Generate content
+    const contentInput: DestinationContentInput = {
+      destination: input.destination,
+    };
+
+    const content = await generateDestinationContent(contentInput);
+
+    // Remove metadata before returning
+    const { _meta, ...cleanContent } = content;
+
+    console.log(`\n✅ ============================================`);
+    console.log(`✅ Content generated for: ${input.destination.name}`);
+    console.log(`✅ Overview paragraphs: ${cleanContent.overview.length}`);
+    console.log(`✅ Things to do: ${cleanContent.thingsToDo.length}`);
+    console.log(`✅ FAQs: ${cleanContent.faqs.length}`);
+    if (_meta) {
+      console.log(`✅ Tokens used - Input: ${_meta.inputTokens}, Output: ${_meta.outputTokens}`);
+    }
+    console.log(`✅ ============================================\n`);
+
+    return {
+      success: true,
+      status: "draft",
+      content: cleanContent,
+      iterations: 1,
+    };
+  } catch (error) {
+    console.error("\n❌ ============================================");
+    console.error("❌ ERROR DURING DESTINATION CONTENT GENERATION");
+    console.error("❌ ============================================");
+    console.error("❌ Error:", error);
+    console.error("❌ ============================================\n");
+
+    return {
+      success: false,
+      status: "error",
+      content: null,
+      iterations: 1,
+      errorMessage: error instanceof Error ? error.message : String(error),
+    };
+  }
+};
+
 // Export for testing
 export const _internal = {
   generateRevision,

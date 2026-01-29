@@ -15,6 +15,7 @@ import { DestinationCard } from "@/components/destinations";
 import { ItineraryCard } from "@/components/itineraries";
 import { allDestinations } from "@/lib/constants/destinations";
 import { getItinerariesByDestination } from "@/lib/constants/itineraries";
+import { getDestinationContent } from "@/lib/constants/destination-content";
 import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
@@ -87,36 +88,15 @@ async function getDestinationArticles(destinationSlug: string) {
   }
 }
 
-// Sample FAQ data (would come from database in production)
-const sampleFaqs = [
-  {
-    question: "How many days should I spend here?",
-    answer:
-      "We recommend 2-4 days to explore the main attractions and get a feel for the local culture. If you want to take day trips or explore more deeply, consider staying 4-5 days.",
-  },
-  {
-    question: "What is the best time to visit?",
-    answer:
-      "The best time depends on what you want to do. Generally, the dry season (November to April) offers the best weather. However, each destination has its own microclimate - check our detailed weather section above.",
-  },
-  {
-    question: "Is it safe for solo travelers?",
-    answer:
-      "Vietnam is generally very safe for solo travelers, including women traveling alone. Use normal precautions, watch your belongings in crowded areas, and you'll have a great experience.",
-  },
-  {
-    question: "Do I need to book accommodation in advance?",
-    answer:
-      "During peak season (December-February and July-August), we recommend booking at least a few days ahead for popular areas. In low season, you can often find good deals on arrival.",
-  },
-];
-
 export default async function DestinationPage({ params }: DestinationPageProps) {
   const destination = allDestinations.find((d) => d.slug === params.slug);
 
   if (!destination) {
     notFound();
   }
+
+  // Get destination-specific content (or fallback)
+  const content = getDestinationContent(params.slug);
 
   // Fetch published articles for this destination
   const articles = await getDestinationArticles(params.slug);
@@ -164,7 +144,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: sampleFaqs.map((faq) => ({
+    mainEntity: content.faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: {
@@ -306,21 +286,9 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
                   Overview
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-700">
-                  <p>
-                    {destination.name} is one of Vietnam&apos;s most popular destinations,
-                    attracting travelers from around the world. Whether you&apos;re looking
-                    for cultural experiences, natural beauty, or culinary adventures,
-                    this destination has something for everyone.
-                  </p>
-                  <p>
-                    Located in {destination.region} Vietnam, {destination.name} offers
-                    a unique blend of traditional Vietnamese culture and modern amenities.
-                    The area is known for its {destination.type === "beach"
-                      ? "pristine beaches and water activities"
-                      : destination.type === "mountain"
-                      ? "stunning mountain scenery and trekking opportunities"
-                      : "rich history, vibrant street life, and incredible food scene"}.
-                  </p>
+                  {content.overview.map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
                 </div>
               </section>
 
@@ -330,14 +298,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
                   Top Things to Do
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    "Explore the local markets and street food scene",
-                    "Visit historic temples and pagodas",
-                    "Take a walking tour of the old town",
-                    "Enjoy local cuisine at authentic restaurants",
-                    "Experience the nightlife and entertainment",
-                    "Day trip to nearby attractions",
-                  ].map((activity, index) => (
+                  {content.thingsToDo.map((activity, index) => (
                     <div
                       key={index}
                       className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg"
@@ -358,18 +319,13 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
                 </h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    <strong>By Air:</strong> The nearest airport serves domestic and
-                    international flights. From the airport, taxis and ride-hailing
-                    apps (Grab) are readily available.
+                    <strong>By Air:</strong> {content.gettingAround.byAir}
                   </p>
                   <p>
-                    <strong>By Train:</strong> Vietnam&apos;s train network connects major
-                    cities. The journey offers scenic views and is a great way to
-                    experience the countryside.
+                    <strong>By Train:</strong> {content.gettingAround.byTrain}
                   </p>
                   <p>
-                    <strong>Getting Around:</strong> Within the city, options include
-                    taxis, Grab, motorbike rentals, and walking for short distances.
+                    <strong>Getting Around:</strong> {content.gettingAround.local}
                   </p>
                 </div>
               </section>
@@ -380,7 +336,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
                   Frequently Asked Questions
                 </h2>
                 <Accordion type="single" collapsible className="w-full">
-                  {sampleFaqs.map((faq, index) => (
+                  {content.faqs.map((faq, index) => (
                     <AccordionItem key={index} value={`item-${index}`}>
                       <AccordionTrigger className="text-left font-semibold">
                         {faq.question}
