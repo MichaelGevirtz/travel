@@ -34,3 +34,18 @@ When adding or modifying links in this project, follow these rules to prevent br
 - Navigation links: `lib/constants/navigation.ts`
 - Link validation tests: `tests/unit/link-validation.test.ts`
 - Integration link tests: `tests/integration/broken-links.test.ts`
+
+## Data Fetching & Caching
+
+Use `force-cache` for content that rarely changes and refreshes on deploy:
+
+### Cache Options
+| Option | Use When | Example |
+|--------|----------|---------|
+| `force-cache` | Content changes only on deploy | Destinations, guides, itineraries |
+| `no-store` | Real-time data needed | User-specific content, live prices |
+| `revalidate: N` | Content updates periodically | Blog posts (revalidate: 3600) |
+
+### Current Implementation
+- Destination articles: `force-cache` in `app/vietnam/destinations/[slug]/page.tsx:76`
+- Cache clears automatically on each deployment
