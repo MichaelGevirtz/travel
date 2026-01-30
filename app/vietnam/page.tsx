@@ -6,11 +6,11 @@ import { DestinationGrid } from "@/components/destinations";
 import { featuredDestinations } from "@/lib/constants/destinations";
 
 export const metadata: Metadata = {
-  title: "Vietnam Travel Guide | Complete Guide to Visiting Vietnam 2025",
+  title: "Vietnam Travel Guide | Complete Guide to Visiting Vietnam 2026",
   description:
     "Everything you need to know about traveling to Vietnam. Destinations, itineraries, accommodation, visa, budget, and insider tips from experienced travelers.",
   openGraph: {
-    title: "Vietnam Travel Guide | Complete Guide to Visiting Vietnam 2025",
+    title: "Vietnam Travel Guide | Complete Guide to Visiting Vietnam 2026",
     description:
       "Everything you need to know about traveling to Vietnam. Destinations, itineraries, accommodation, visa, budget, and insider tips.",
     url: "/vietnam",

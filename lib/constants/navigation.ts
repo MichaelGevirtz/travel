@@ -34,10 +34,11 @@ export const navItems: NavItem[] = [
     href: "/vietnam/itineraries",
   },
   {
-    label: "Guides",
+    label: "Tips & Guides",
     href: "/vietnam/guides",
     hasDropdown: true,
     dropdownItems: [
+      { label: "Travel Tips", href: "/vietnam/tips", description: "Quick tips for your trip" },
       { label: "All Guides", href: "/vietnam/guides" },
       { label: "Visa Information", href: "/vietnam/guides/visa" },
       { label: "Best Time to Visit", href: "/vietnam/guides/best-time-to-visit" },

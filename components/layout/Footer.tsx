@@ -30,7 +30,7 @@ export function Footer() {
             </p>
             <div className="mt-6">
               <p className="text-xs text-gray-500">
-                Updated: January 2025
+                Updated: January 2026
               </p>
             </div>
           </div>

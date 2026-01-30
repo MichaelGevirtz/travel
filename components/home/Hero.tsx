@@ -42,6 +42,7 @@ export function Hero() {
           {/* Primary CTA - Von Restorff Effect: Stands out with color */}
           <Link
             href="/vietnam/destinations"
+            data-cta="primary"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-[#52c9a0] rounded-lg hover:bg-[#45b892] transition-colors shadow-lg hover:shadow-xl group"
           >
             Explore Destinations
@@ -51,6 +52,7 @@ export function Hero() {
           {/* Secondary CTA - Visual hierarchy: Outline style for less importance */}
           <Link
             href="/vietnam/itineraries"
+            data-cta="primary"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-lg hover:bg-white/20 transition-colors"
           >
             View Sample Itineraries

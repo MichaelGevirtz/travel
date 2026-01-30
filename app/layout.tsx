@@ -4,13 +4,14 @@ import "./globals.css";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { AnalyticsEvents } from "@/components/AnalyticsEvents";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
-    default: "Vietnam Insider | Complete Vietnam Travel Guide 2025",
+    default: "Vietnam Insider | Complete Vietnam Travel Guide 2026",
     template: "%s | Vietnam Insider",
   },
   description:
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "Vietnam Insider",
-    title: "Vietnam Insider | Complete Vietnam Travel Guide 2025",
+    title: "Vietnam Insider | Complete Vietnam Travel Guide 2026",
     description:
       "Your complete guide to Vietnam travel. Insider tips, detailed itineraries, and honest hotel recommendations.",
     images: [
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vietnam Insider | Complete Vietnam Travel Guide 2025",
+    title: "Vietnam Insider | Complete Vietnam Travel Guide 2026",
     description:
       "Your complete guide to Vietnam travel. Insider tips, detailed itineraries, and honest hotel recommendations.",
     images: ["/og-image.jpg"],
@@ -120,6 +121,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <GoogleAnalytics />
+        <AnalyticsEvents />
         <Navigation />
         <main id="main-content">{children}</main>
         <Footer />

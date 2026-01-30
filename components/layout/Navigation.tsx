@@ -139,6 +139,7 @@ export function Navigation() {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/vietnam/itineraries"
+              data-cta="primary"
               className="px-4 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-lg hover:bg-emerald-700 transition-colors shadow-sm hover:shadow-md"
             >
               Plan Your Trip
@@ -229,6 +230,7 @@ export function Navigation() {
                   <div className="mt-6 pt-6 border-t border-gray-200 space-y-3">
                     <Link
                       href="/vietnam/itineraries"
+                      data-cta="primary"
                       className="block w-full px-4 py-3 bg-emerald-600 text-white text-center font-semibold rounded-lg hover:bg-emerald-700 transition-colors shadow-sm"
                       onClick={() => setMobileMenuOpen(false)}
                     >

@@ -6,11 +6,11 @@ import { allDestinations } from "@/lib/constants/destinations";
 import { DestinationFilters } from "@/components/destinations/DestinationFilters";
 
 export const metadata: Metadata = {
-  title: "Vietnam Destinations | Top Places to Visit in 2025",
+  title: "Vietnam Destinations | Top Places to Visit in 2026",
   description:
     "Explore 50+ Vietnam destinations from bustling cities to serene beaches. Find the perfect places to visit with our detailed guides, maps, and local tips.",
   openGraph: {
-    title: "Vietnam Destinations | Top Places to Visit in 2025",
+    title: "Vietnam Destinations | Top Places to Visit in 2026",
     description:
       "Explore 50+ Vietnam destinations from bustling cities to serene beaches.",
     url: "/vietnam/destinations",

@@ -66,3 +66,32 @@ Use `force-cache` for content that rarely changes and refreshes on deploy:
 - Verify the site loads at https://vietnam-insider.com
 - Check MongoDB connection by visiting `/api/destinations`
 - Monitor Vercel deployment logs for errors
+
+## Analytics (GA4)
+
+**Full documentation:** `docs/analytics.md`
+
+### CTA Tracking Rule
+
+When adding buttons or links, determine if they represent **conversion intent**:
+
+| Add `data-cta="primary"` | Do NOT add |
+|--------------------------|------------|
+| Hero CTAs, "Book Now", "Subscribe" | Nav links, filters, pagination |
+| "Plan Your Trip", "Get Started" | "Read more", back buttons |
+| Affiliate/booking buttons | Modal close, social share |
+
+```tsx
+// Conversion intent → add data-cta
+<Link href="/itineraries" data-cta="primary">Plan Your Trip</Link>
+
+// Not conversion intent → no data-cta
+<Link href="/destinations">Destinations</Link>
+```
+
+### Custom Events
+- `scroll_75` - fires at 75% scroll depth
+- `cta_click` - fires on `data-cta="primary"` clicks
+- `outbound_click` - fires on external link clicks
+
+Implementation: `components/AnalyticsEvents.tsx`

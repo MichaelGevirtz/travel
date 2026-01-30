@@ -81,6 +81,7 @@ export function Newsletter() {
               <Button
                 type="submit"
                 disabled={status === "loading"}
+                data-cta="primary"
                 className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6"
               >
                 {status === "loading" ? (
