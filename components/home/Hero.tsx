@@ -25,37 +25,21 @@ export function Hero() {
 
       {/* Content Container */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Main Headline - Refactoring UI: Size + weight for hierarchy */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
-          Your Complete Guide to{" "}
-          <span className="text-[#52c9a0]">Vietnam Travel</span>
+        {/* Main Headline - Explicit value proposition */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 md:mb-10 leading-tight">
+          Plan a smart Vietnam trip —{" "}
+          <span className="text-[#52c9a0]">itineraries, destinations, real costs.</span>
         </h1>
 
-        {/* Subheading - Don't Make Me Think: Clear value proposition */}
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
-          Insider tips, detailed itineraries, and honest hotel recommendations
-          from 7+ years exploring Vietnam
-        </p>
-
-        {/* Call-to-Action Buttons - Fitts's Law: Large, thumb-friendly targets */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 md:mb-12">
-          {/* Primary CTA - Von Restorff Effect: Stands out with color */}
-          <Link
-            href="/vietnam/destinations"
-            data-cta="primary"
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-[#52c9a0] rounded-lg hover:bg-[#45b892] transition-colors shadow-lg hover:shadow-xl group"
-          >
-            Explore Destinations
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
-
-          {/* Secondary CTA - Visual hierarchy: Outline style for less importance */}
+        {/* Single Primary CTA */}
+        <div className="mb-8 md:mb-12">
           <Link
             href="/vietnam/itineraries"
             data-cta="primary"
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-lg hover:bg-white/20 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-[#52c9a0] rounded-lg hover:bg-[#45b892] transition-colors shadow-lg hover:shadow-xl group"
           >
-            View Sample Itineraries
+            Start with a Vietnam itinerary
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
