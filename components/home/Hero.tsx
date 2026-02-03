@@ -28,7 +28,7 @@ export function Hero() {
         {/* Main Headline - Explicit value proposition */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 md:mb-10 leading-tight">
           Plan a smart Vietnam trip —{" "}
-          <span className="text-[#52c9a0]">itineraries, destinations, real costs.</span>
+          <span className="text-[#52c9a0]">trip plans, destinations, real costs.</span>
         </h1>
 
         {/* Single Primary CTA */}
@@ -38,7 +38,7 @@ export function Hero() {
             data-cta="primary"
             className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 bg-[#52c9a0] rounded-lg hover:bg-[#45b892] transition-colors shadow-lg hover:shadow-xl group"
           >
-            Start with a Vietnam itinerary
+            Start with a trip plan
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

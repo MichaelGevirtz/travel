@@ -46,17 +46,17 @@ export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) 
   }
 
   // Dynamic page title based on filters
-  let pageTitle = "Vietnam Itineraries";
+  let pageTitle = "Vietnam Trip Plans";
   let pageSubtitle = "Curated trip plans for every duration and season";
 
   if (duration === "1-week") {
-    pageTitle = "1-Week Vietnam Itineraries";
+    pageTitle = "1-Week Vietnam Trip Plan";
     pageSubtitle = "Perfect for a quick but immersive Vietnam experience";
   } else if (duration === "2-week") {
-    pageTitle = "2-Week Vietnam Itineraries";
+    pageTitle = "2-Week Vietnam Trip Plan";
     pageSubtitle = "The sweet spot for exploring two regions in depth";
   } else if (duration === "3-week") {
-    pageTitle = "3-Week Vietnam Itineraries";
+    pageTitle = "3-Week Vietnam Trip Plan";
     pageSubtitle = "The ultimate journey covering all of Vietnam";
   }
 
@@ -76,7 +76,7 @@ export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) 
 
   const breadcrumbs = [
     { label: "Vietnam", href: "/vietnam" },
-    { label: "Itineraries" },
+    { label: "Trip Plans" },
   ];
 
   return (
@@ -120,7 +120,7 @@ export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) 
               href="/vietnam/itineraries"
               className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
             >
-              View all itineraries →
+              View all trip plans →
             </Link>
           </div>
         </div>
@@ -129,8 +129,8 @@ export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) 
       {/* Results Count */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <p className="text-sm text-gray-600">
-          Showing {filteredItineraries.length} itinerar
-          {filteredItineraries.length !== 1 ? "ies" : "y"}
+          Showing {filteredItineraries.length} trip plan
+          {filteredItineraries.length !== 1 ? "s" : ""}
         </p>
       </div>
 
@@ -140,13 +140,13 @@ export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) 
       ) : (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <p className="text-gray-600 text-lg">
-            No itineraries found matching your filters.
+            No trip plans found matching your filters.
           </p>
           <a
             href="/vietnam/itineraries"
             className="inline-block mt-4 text-emerald-600 font-medium hover:text-emerald-700"
           >
-            View all itineraries
+            View all trip plans
           </a>
         </div>
       )}

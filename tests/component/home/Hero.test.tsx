@@ -20,7 +20,7 @@ describe('Hero', () => {
       render(<Hero />);
 
       const heading = screen.getByRole('heading', { level: 1 });
-      expect(heading.textContent).toContain('itineraries, destinations, real costs');
+      expect(heading.textContent).toContain('trip plans, destinations, real costs');
     });
   });
 
@@ -48,7 +48,7 @@ describe('Hero', () => {
     it('renders single primary CTA link to itineraries', () => {
       render(<Hero />);
 
-      const link = screen.getByRole('link', { name: /start with a vietnam itinerary/i });
+      const link = screen.getByRole('link', { name: /start with a trip plan/i });
 
       expect(link).toBeTruthy();
       expect(link.getAttribute('href')).toBe('/vietnam/itineraries');
@@ -66,7 +66,7 @@ describe('Hero', () => {
       render(<Hero />);
 
       const primaryLink = screen.getByRole('link', {
-        name: /start with a vietnam itinerary/i,
+        name: /start with a trip plan/i,
       });
 
       expect(primaryLink.getAttribute('data-cta')).toBe('primary');
@@ -138,9 +138,9 @@ describe('Hero', () => {
     it('has accessible link text for primary CTA', () => {
       render(<Hero />);
 
-      const link = screen.getByRole('link', { name: /start with a vietnam itinerary/i });
+      const link = screen.getByRole('link', { name: /start with a trip plan/i });
 
-      expect(link.textContent).toContain('Start with a Vietnam itinerary');
+      expect(link.textContent).toContain('Start with a trip plan');
     });
 
     it('heading is visible and readable', () => {

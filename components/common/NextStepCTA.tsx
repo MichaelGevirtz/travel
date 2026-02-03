@@ -23,12 +23,12 @@ const guideConfig: Record<
   },
   transport: {
     heading: "Know how to get around?",
-    cta: "See sample itineraries",
+    cta: "See sample trip plans",
     href: "/vietnam/itineraries",
   },
   budget: {
     heading: "Got your budget sorted?",
-    cta: "Plan with our itineraries",
+    cta: "Plan with our trip plans",
     href: "/vietnam/itineraries",
   },
   timing: {
@@ -62,7 +62,7 @@ export function NextStepCTA({
   switch (variant) {
     case "destination":
       heading = "Plan your visit";
-      ctaText = `See itineraries featuring ${destinationName}`;
+      ctaText = `See trip plans featuring ${destinationName}`;
       href = `/vietnam/itineraries?destination=${destinationSlug}`;
       break;
     case "itinerary":
@@ -78,7 +78,7 @@ export function NextStepCTA({
       break;
     default:
       heading = "Continue planning";
-      ctaText = "View itineraries";
+      ctaText = "View trip plans";
       href = "/vietnam/itineraries";
   }
 

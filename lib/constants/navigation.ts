@@ -30,7 +30,7 @@ export const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Itineraries",
+    label: "Trip Plans",
     href: "/vietnam/itineraries",
   },
   {
@@ -79,9 +79,9 @@ export const footerGuides = [
 ];
 
 export const footerItineraries = [
-  { label: "1 Week Itinerary", href: "/vietnam/itineraries/1-week" },
-  { label: "2 Week Itinerary", href: "/vietnam/itineraries/2-weeks" },
-  { label: "3 Week Itinerary", href: "/vietnam/itineraries/3-weeks" },
+  { label: "1 Week Trip Plan", href: "/vietnam/itineraries/1-week" },
+  { label: "2 Week Trip Plan", href: "/vietnam/itineraries/2-weeks" },
+  { label: "3 Week Trip Plan", href: "/vietnam/itineraries/3-weeks" },
 ];
 
 export const footerLegal = [

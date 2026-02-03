@@ -233,20 +233,20 @@ describe('Navigation Constants', () => {
     });
 
     // Specific itineraries
-    it('includes 1 Week Itinerary', () => {
-      const oneWeek = footerItineraries.find((item) => item.label === '1 Week Itinerary');
+    it('includes 1 Week Trip Plan', () => {
+      const oneWeek = footerItineraries.find((item) => item.label === '1 Week Trip Plan');
       expect(oneWeek).toBeDefined();
       expect(oneWeek?.href).toBe('/vietnam/itineraries/1-week');
     });
 
-    it('includes 2 Week Itinerary', () => {
-      const twoWeeks = footerItineraries.find((item) => item.label === '2 Week Itinerary');
+    it('includes 2 Week Trip Plan', () => {
+      const twoWeeks = footerItineraries.find((item) => item.label === '2 Week Trip Plan');
       expect(twoWeeks).toBeDefined();
       expect(twoWeeks?.href).toBe('/vietnam/itineraries/2-weeks');
     });
 
-    it('includes 3 Week Itinerary', () => {
-      const threeWeeks = footerItineraries.find((item) => item.label === '3 Week Itinerary');
+    it('includes 3 Week Trip Plan', () => {
+      const threeWeeks = footerItineraries.find((item) => item.label === '3 Week Trip Plan');
       expect(threeWeeks).toBeDefined();
       expect(threeWeeks?.href).toBe('/vietnam/itineraries/3-weeks');
     });
