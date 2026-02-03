@@ -90,8 +90,9 @@ When adding buttons or links, determine if they represent **conversion intent**:
 ```
 
 ### Custom Events
-- `scroll_75` - fires at 75% scroll depth
+- `scroll_25`, `scroll_50`, `scroll_75` - fires at scroll depth thresholds
 - `cta_click` - fires on `data-cta="primary"` clicks
-- `outbound_click` - fires on external link clicks
+- `internal_link_click` - fires on same-domain link clicks (excludes # anchors)
+- `outbound_affiliate_click` - fires on external link clicks
 
 Implementation: `components/AnalyticsEvents.tsx`

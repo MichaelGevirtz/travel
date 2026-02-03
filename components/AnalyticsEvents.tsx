@@ -11,6 +11,10 @@ declare global {
 
 export function AnalyticsEvents() {
   const pathname = usePathname();
+
+  // Scroll depth tracking refs
+  const scroll25FiredRef = useRef(false);
+  const scroll50FiredRef = useRef(false);
   const scroll75FiredRef = useRef(false);
 
   const trackEvent = useCallback(
@@ -22,18 +26,37 @@ export function AnalyticsEvents() {
     []
   );
 
-  // scroll_75: fires once at 75% scroll depth
+  // Scroll depth events: fires once at 25%, 50%, 75%
   useEffect(() => {
+    // Reset on route change
+    scroll25FiredRef.current = false;
+    scroll50FiredRef.current = false;
     scroll75FiredRef.current = false;
 
     const handleScroll = () => {
-      if (scroll75FiredRef.current) return;
-      const scrollPercent =
-        window.scrollY /
-        (document.documentElement.scrollHeight - window.innerHeight);
-      if (scrollPercent >= 0.75) {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) return; // Page too short to scroll
+
+      const scrollPercent = window.scrollY / scrollHeight;
+      const pagePath = window.location.pathname;
+
+      if (!scroll25FiredRef.current && scrollPercent >= 0.25) {
+        scroll25FiredRef.current = true;
+        trackEvent("scroll_25", { page_path: pagePath });
+      }
+
+      if (!scroll50FiredRef.current && scrollPercent >= 0.5) {
+        scroll50FiredRef.current = true;
+        trackEvent("scroll_50", { page_path: pagePath });
+      }
+
+      if (!scroll75FiredRef.current && scrollPercent >= 0.75) {
         scroll75FiredRef.current = true;
-        trackEvent("scroll_75", { page_path: window.location.pathname });
+        trackEvent("scroll_75", { page_path: pagePath });
+      }
+
+      // Remove listener once all thresholds fired
+      if (scroll25FiredRef.current && scroll50FiredRef.current && scroll75FiredRef.current) {
         window.removeEventListener("scroll", handleScroll);
       }
     };
@@ -60,19 +83,62 @@ export function AnalyticsEvents() {
     return () => document.removeEventListener("click", handleClick);
   }, [pathname, trackEvent]);
 
-  // outbound_click: fires on external link clicks
+  // internal_link_click: fires on same-domain link clicks (excludes anchors)
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      const link = (e.target as HTMLElement).closest<HTMLAnchorElement>(
-        "a[href]"
-      );
+      const link = (e.target as HTMLElement).closest<HTMLAnchorElement>("a[href]");
       if (!link) return;
+
+      const href = link.getAttribute("href");
+      if (!href) return;
+
+      // Skip anchor-only links
+      if (href.startsWith("#")) return;
+
+      // Skip mailto/tel
+      if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
+
+      try {
+        const url = new URL(href, window.location.origin);
+
+        // Only track internal links (same hostname)
+        if (url.hostname === window.location.hostname) {
+          // Skip if it's just an anchor on the same page
+          if (url.pathname === window.location.pathname && url.hash) return;
+
+          trackEvent("internal_link_click", {
+            link_url: url.pathname,
+            page_path: window.location.pathname,
+          });
+        }
+      } catch {
+        // Relative URL - treat as internal
+        if (!href.startsWith("http")) {
+          trackEvent("internal_link_click", {
+            link_url: href,
+            page_path: window.location.pathname,
+          });
+        }
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [pathname, trackEvent]);
+
+  // outbound_affiliate_click: fires on external link clicks
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const link = (e.target as HTMLElement).closest<HTMLAnchorElement>("a[href]");
+      if (!link) return;
+
       const href = link.href;
       if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
+
       try {
         const url = new URL(href, window.location.origin);
         if (url.hostname !== window.location.hostname) {
-          trackEvent("outbound_click", {
+          trackEvent("outbound_affiliate_click", {
             link_url: href,
             page_path: window.location.pathname,
           });
@@ -82,6 +148,7 @@ export function AnalyticsEvents() {
       }
     };
 
+    // Capture phase ensures event fires before navigation
     document.addEventListener("click", handleClick, { capture: true });
     return () =>
       document.removeEventListener("click", handleClick, { capture: true });

@@ -10,9 +10,12 @@ This project uses Google Analytics 4 (gtag.js) for tracking. The implementation 
 
 | Event | Trigger | Payload |
 |-------|---------|---------|
+| `scroll_25` | User scrolls ≥25% of page (once per page) | `page_path` |
+| `scroll_50` | User scrolls ≥50% of page (once per page) | `page_path` |
 | `scroll_75` | User scrolls ≥75% of page (once per page) | `page_path` |
 | `cta_click` | Click on `data-cta="primary"` element | `cta_text`, `page_path` |
-| `outbound_click` | Click on external link (not mailto/tel) | `link_url`, `page_path` |
+| `internal_link_click` | Click on same-domain link (excludes # anchors) | `link_url`, `page_path` |
+| `outbound_affiliate_click` | Click on external link (not mailto/tel) | `link_url`, `page_path` |
 
 ## CTA Click Tracking
 
