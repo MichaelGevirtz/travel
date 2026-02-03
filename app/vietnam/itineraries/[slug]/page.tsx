@@ -13,6 +13,8 @@ import {
 import { Breadcrumbs } from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
 import { ItineraryCard } from "@/components/itineraries";
+import { NextStepCTA } from "@/components/common";
+import { allDestinations } from "@/lib/constants/destinations";
 import ReactMarkdown from "react-markdown";
 import { markdownComponents } from "@/components/blog/MarkdownComponents";
 import { allItineraries } from "@/lib/constants/itineraries";
@@ -114,6 +116,11 @@ export default async function ItineraryPage({ params }: ItineraryPageProps) {
         (i.duration === itineraryMeta.duration || i.season === itineraryMeta.season)
     )
     .slice(0, 3);
+
+  // Get first destination for CTA
+  const firstStop = route.stops[0];
+  const firstDestination = allDestinations.find((d) => d.slug === firstStop?.slug);
+  const featuredDestinationName = firstDestination?.name || firstStop?.slug?.replace(/-/g, " ") || "the first stop";
 
   return (
     <article className="min-h-screen bg-white">
@@ -268,6 +275,19 @@ export default async function ItineraryPage({ params }: ItineraryPageProps) {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          )}
+
+          {/* Next Step CTA */}
+          {firstStop?.slug && (
+            <div className="mt-16">
+              <NextStepCTA
+                variant="itinerary"
+                featuredDestination={{
+                  name: featuredDestinationName,
+                  slug: firstStop.slug,
+                }}
+              />
             </div>
           )}
 

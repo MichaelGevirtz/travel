@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ExternalLink, Clock, Shield, AlertTriangle, CheckCircle2, Phone } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout";
+import { NextStepCTA } from "@/components/common";
 
 export const metadata: Metadata = {
   title: "Vietnam Safety Guide 2026 | Scams & Tips",
@@ -216,25 +217,30 @@ export default function SafetyScamsGuidePage() {
           </ul>
         </section>
 
+        {/* Next Step CTA */}
+        <div className="mt-12">
+          <NextStepCTA variant="guide" guideType="safety" />
+        </div>
+
         {/* Related Guides */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <h3 className="font-semibold text-gray-900 mb-4">Related Guides</h3>
-          <div className="flex flex-wrap gap-3">
+        <div className="mt-8 pt-6 border-t border-gray-100">
+          <p className="text-sm text-gray-500 mb-3">More guides:</p>
+          <div className="flex flex-wrap gap-2">
             <Link
               href="/vietnam/guides/visa"
-              className="text-sm bg-white px-4 py-2 rounded-lg border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+              className="text-xs text-gray-600 px-3 py-1.5 rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
             >
               Visa Information
             </Link>
             <Link
               href="/vietnam/guides/transport"
-              className="text-sm bg-white px-4 py-2 rounded-lg border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+              className="text-xs text-gray-600 px-3 py-1.5 rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
             >
               Transportation
             </Link>
             <Link
               href="/vietnam/guides/sim-esim"
-              className="text-sm bg-white px-4 py-2 rounded-lg border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+              className="text-xs text-gray-600 px-3 py-1.5 rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
             >
               SIM & eSIM
             </Link>

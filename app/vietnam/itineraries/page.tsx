@@ -1,9 +1,11 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import { ItineraryGrid } from "@/components/itineraries";
 import { ItineraryFilters } from "@/components/itineraries";
 import { Breadcrumbs } from "@/components/layout";
-import { filterItineraries } from "@/lib/constants/itineraries";
+import { filterItineraries, getItinerariesByDestination } from "@/lib/constants/itineraries";
+import { allDestinations } from "@/lib/constants/destinations";
 
 export const metadata: Metadata = {
   title: "Vietnam Itineraries | 1, 2 & 3 Week Trip Plans for 2026",
@@ -18,14 +20,30 @@ export const metadata: Metadata = {
 };
 
 interface ItinerariesPageProps {
-  searchParams: { duration?: string; season?: string };
+  searchParams: { duration?: string; season?: string; destination?: string };
 }
 
 export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) {
-  const { duration, season } = searchParams;
+  const { duration, season, destination } = searchParams;
+
+  // Get destination details if filtering by destination
+  const destinationData = destination
+    ? allDestinations.find((d) => d.slug === destination)
+    : null;
 
   // Filter itineraries based on query params
-  const filteredItineraries = filterItineraries({ duration, season });
+  let filteredItineraries = destination
+    ? getItinerariesByDestination(destination)
+    : filterItineraries({ duration, season });
+
+  // Apply additional filters if both destination and duration/season are set
+  if (destination && (duration || season)) {
+    filteredItineraries = filteredItineraries.filter((i) => {
+      if (duration && i.duration !== duration) return false;
+      if (season && i.season !== season) return false;
+      return true;
+    });
+  }
 
   // Dynamic page title based on filters
   let pageTitle = "Vietnam Itineraries";
@@ -89,6 +107,24 @@ export default function ItinerariesPage({ searchParams }: ItinerariesPageProps) 
           </Suspense>
         </div>
       </section>
+
+      {/* Destination Filter Banner */}
+      {destinationData && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-r-lg flex items-center justify-between">
+            <p className="text-gray-700">
+              Showing itineraries featuring{" "}
+              <strong className="text-emerald-700">{destinationData.name}</strong>
+            </p>
+            <Link
+              href="/vietnam/itineraries"
+              className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+            >
+              View all itineraries →
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* Results Count */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

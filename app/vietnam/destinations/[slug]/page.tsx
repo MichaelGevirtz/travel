@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout";
 import { DestinationCard } from "@/components/destinations";
+import { NextStepCTA } from "@/components/common";
 import { allDestinations } from "@/lib/constants/destinations";
 import { getItinerariesByDestination } from "@/lib/constants/itineraries";
 import { getDestinationContent } from "@/lib/constants/destination-content";
@@ -481,6 +482,15 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
               )}
             </aside>
           </div>
+        </div>
+
+        {/* Next Step CTA */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <NextStepCTA
+            variant="destination"
+            destinationName={destination.name}
+            destinationSlug={destination.slug}
+          />
         </div>
 
         {/* Related Destinations */}

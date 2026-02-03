@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ExternalLink, Clock, Plane, Train, Bus, Car } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout";
+import { NextStepCTA } from "@/components/common";
 
 export const metadata: Metadata = {
   title: "Vietnam Transportation Guide 2026 | Getting Around",
@@ -209,25 +210,30 @@ export default function TransportGuidePage() {
           </ul>
         </section>
 
+        {/* Next Step CTA */}
+        <div className="mt-12">
+          <NextStepCTA variant="guide" guideType="transport" />
+        </div>
+
         {/* Related Guides */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <h3 className="font-semibold text-gray-900 mb-4">Related Guides</h3>
-          <div className="flex flex-wrap gap-3">
+        <div className="mt-8 pt-6 border-t border-gray-100">
+          <p className="text-sm text-gray-500 mb-3">More guides:</p>
+          <div className="flex flex-wrap gap-2">
             <Link
               href="/vietnam/guides/visa"
-              className="text-sm bg-white px-4 py-2 rounded-lg border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+              className="text-xs text-gray-600 px-3 py-1.5 rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
             >
               Visa Information
             </Link>
             <Link
               href="/vietnam/guides/best-time-to-visit"
-              className="text-sm bg-white px-4 py-2 rounded-lg border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+              className="text-xs text-gray-600 px-3 py-1.5 rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
             >
               Best Time to Visit
             </Link>
             <Link
               href="/vietnam/guides/costs-budget"
-              className="text-sm bg-white px-4 py-2 rounded-lg border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+              className="text-xs text-gray-600 px-3 py-1.5 rounded-full border border-gray-200 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
             >
               Budget & Costs
             </Link>

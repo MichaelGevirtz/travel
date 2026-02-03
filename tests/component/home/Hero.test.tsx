@@ -4,33 +4,23 @@ import { allDestinations } from '@/lib/constants/destinations';
 
 describe('Hero', () => {
   describe('Rendering', () => {
-    it('renders main heading with Vietnam Travel highlighted', () => {
+    it('renders main heading with value proposition', () => {
       render(<Hero />);
 
       const heading = screen.getByRole('heading', {
         level: 1,
-        name: /your complete guide to vietnam travel/i,
+        name: /plan a smart vietnam trip/i,
       });
 
       expect(heading).toBeTruthy();
-      expect(heading.textContent).toContain('Your Complete Guide to');
-      expect(heading.textContent).toContain('Vietnam Travel');
+      expect(heading.textContent).toContain('Plan a smart Vietnam trip');
     });
 
-    it('renders subheading with value proposition', () => {
+    it('renders highlighted text in heading', () => {
       render(<Hero />);
 
-      expect(
-        screen.getByText(
-          /insider tips, detailed itineraries, and honest hotel recommendations/i
-        )
-      ).toBeTruthy();
-    });
-
-    it('renders experience mention in subheading', () => {
-      render(<Hero />);
-
-      expect(screen.getByText(/7\+ years exploring vietnam/i)).toBeTruthy();
+      const heading = screen.getByRole('heading', { level: 1 });
+      expect(heading.textContent).toContain('itineraries, destinations, real costs');
     });
   });
 
@@ -55,42 +45,31 @@ describe('Hero', () => {
   });
 
   describe('Call-to-Action Links', () => {
-    it('renders primary CTA link to destinations', () => {
+    it('renders single primary CTA link to itineraries', () => {
       render(<Hero />);
 
-      const link = screen.getByRole('link', { name: /explore destinations/i });
-
-      expect(link).toBeTruthy();
-      expect(link.getAttribute('href')).toBe('/vietnam/destinations');
-    });
-
-    it('renders secondary CTA link to itineraries', () => {
-      render(<Hero />);
-
-      const link = screen.getByRole('link', {
-        name: /view sample itineraries/i,
-      });
+      const link = screen.getByRole('link', { name: /start with a vietnam itinerary/i });
 
       expect(link).toBeTruthy();
       expect(link.getAttribute('href')).toBe('/vietnam/itineraries');
     });
 
-    it('renders both CTA buttons', () => {
+    it('renders only one CTA button', () => {
       render(<Hero />);
 
       const links = screen.getAllByRole('link');
 
-      expect(links).toHaveLength(2);
+      expect(links).toHaveLength(1);
     });
 
-    it('primary CTA contains arrow icon indicator', () => {
+    it('primary CTA has data-cta attribute for analytics', () => {
       render(<Hero />);
 
       const primaryLink = screen.getByRole('link', {
-        name: /explore destinations/i,
+        name: /start with a vietnam itinerary/i,
       });
 
-      expect(primaryLink.textContent).toContain('Explore Destinations');
+      expect(primaryLink.getAttribute('data-cta')).toBe('primary');
     });
   });
 
@@ -159,19 +138,9 @@ describe('Hero', () => {
     it('has accessible link text for primary CTA', () => {
       render(<Hero />);
 
-      const link = screen.getByRole('link', { name: /explore destinations/i });
+      const link = screen.getByRole('link', { name: /start with a vietnam itinerary/i });
 
-      expect(link.textContent).toContain('Explore Destinations');
-    });
-
-    it('has accessible link text for secondary CTA', () => {
-      render(<Hero />);
-
-      const link = screen.getByRole('link', {
-        name: /view sample itineraries/i,
-      });
-
-      expect(link.textContent).toContain('View Sample Itineraries');
+      expect(link.textContent).toContain('Start with a Vietnam itinerary');
     });
 
     it('heading is visible and readable', () => {
@@ -180,29 +149,29 @@ describe('Hero', () => {
       const heading = screen.getByRole('heading', { level: 1 });
 
       expect(heading).toBeTruthy();
-      expect(heading.textContent?.toLowerCase()).toContain('your complete guide to vietnam travel');
+      expect(heading.textContent?.toLowerCase()).toContain('plan a smart vietnam trip');
     });
   });
 
   describe('Content Hierarchy', () => {
-    it('renders heading before subheading', () => {
+    it('renders heading before CTA', () => {
       const { container } = render(<Hero />);
 
       const heading = container.querySelector('h1');
-      const subheading = container.querySelector('p');
+      const link = container.querySelector('a');
 
       expect(heading).toBeTruthy();
-      expect(subheading).toBeTruthy();
+      expect(link).toBeTruthy();
 
-      // Heading should appear before subheading in DOM order
+      // Heading should appear before link in DOM order
       const allElements = Array.from(container.querySelectorAll('*'));
       const headingIndex = allElements.indexOf(heading!);
-      const subheadingIndex = allElements.indexOf(subheading!);
+      const linkIndex = allElements.indexOf(link!);
 
-      expect(headingIndex).toBeLessThan(subheadingIndex);
+      expect(headingIndex).toBeLessThan(linkIndex);
     });
 
-    it('renders CTAs after descriptive content', () => {
+    it('renders CTAs after heading', () => {
       render(<Hero />);
 
       const heading = screen.getByRole('heading', { level: 1 });
@@ -249,7 +218,7 @@ describe('Hero', () => {
 
       expect(screen.getByRole('heading', { level: 1 })).toBeTruthy();
       expect(screen.getByRole('img')).toBeTruthy();
-      expect(screen.getAllByRole('link')).toHaveLength(2);
+      expect(screen.getAllByRole('link')).toHaveLength(1);
       expect(screen.getByText('Updated for 2026')).toBeTruthy();
     });
 

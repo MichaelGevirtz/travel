@@ -84,8 +84,8 @@ describe('Navigation Constants', () => {
       expect(destinations?.dropdownItems!.length).toBeGreaterThanOrEqual(3);
     });
 
-    it('includes Guides with dropdown', () => {
-      const guides = navItems.find((item) => item.label === 'Guides');
+    it('includes Tips & Guides with dropdown', () => {
+      const guides = navItems.find((item) => item.label === 'Tips & Guides');
       expect(guides).toBeDefined();
       expect(guides?.hasDropdown).toBe(true);
       expect(guides?.dropdownItems).toBeDefined();
